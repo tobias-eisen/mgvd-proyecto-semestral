@@ -1,0 +1,105 @@
+Bignorm manual
+==============
+
+Bignorm is a read normalization tool. It reads in fastq or fasta files 
+(preferably from the Illumina platform) and drops redundant reads.
+
+Defining input
+--------------
+
+for paired read files, use '-1 reads_1.fq.gz -2 reads_2.fq.gz'
+(like SPAdes or many others).
+
+for unpaired read files, use '-u reads.fq.gz'
+
+You can specify (nearly) as many files as you like, but you should begin
+with your 'best' ones: Bignorm will work on the input files in the order
+given and further down the line a read is seen, the higher the probability
+it will be dropped (as it is less likely that it contains information not
+contained in the other reads seen so far)
+
+Input files may be compressed with gzip (or any format libz can handle),
+but not with bzip2 / 7zip / xv ... .
+
+To use the advanced decision function using phred scores, the input of cause
+has to be in fastq format, other decision functions (see below) will work on
+fasta files, too. When usind the default decision function, you have to check 
+which base value for the phred score is used in your data: Bignorm uses 33 by 
+default, other values (e.G. 64) have to be set using the '--qbase' option.
+
+Compressing output
+------------------
+
+If the next program in your work chain supports gzip'ed input, you should use
+the '-z' option to compress the output files. This will save you both time and
+hard disk space.
+If you find your output to be gzip'ed regardless of the '-z' option given, you
+need to update your libz library.
+
+RAM
+---
+
+Bignorm needs some RAM for the Count Min Sketch used. It will try to adapt to your
+system, but you might want to tell it how much RAM to use with the '-m' and '-t'
+options:
+
+'-m' 	controls the width of a hash line of the Count Min Sketch. It is given in
+	megabyte and has to be power of 2 (or will be changed to the next smaller
+	power of 2 by Bignorm)
+'-t'	controls the number of hash line to use.
+
+RAM usage will be m*t (+ some megabytes).
+Examples:
+for bacteria, we use m=1024 (1 GB), t=10, resulting in 10 GB memory used.
+for eukaryotes, we use m=4096 (4 GB), t=10, resulting in 40 GB memory used
+	(for now, this has always been good enough; this is also the default
+	if enough RAM is available).
+
+To check whether you used enough memory, look at th 'fp' value near the
+end of Bignorms (console) output. This might look like:
+fp:	0.000 (base: 0.023)
+This measure (adopted from diginorm) tells you how likely collisions in the
+Count Min Sketch are. The first value (ranging from zero to one) should be
+below 0.2 (better < 0.1). If it is bigger, you should use more memory; increasing
+m is usually more effective than increasing t. 
+
+(you can also use the '-s' and '-M' options to tune the automatic RAM allocation,
+but normally you wouldn't want to do so)
+
+Decision function
+-----------------
+
+Bignorm has different decision functions build in (and will probably get even more
+as our understanding growths). You can choose a function with '-d' and tune it with 
+'-k', '-A', '-B', '-C' and '-Q' (not all functions use all options).
+
+The default decision function is number 6 which will use the phred score, too (and
+thatfore needs fastq input files). It has been described in our paper
+'An Improved Normalization Algorithm for Big Read Datasets' and uses all options
+given above:
+-k gives the k-mer size
+-Q gives the minimum phred score needed 'to get points' (called Q_0 in our paper)
+-A is the rarity threshold (called c_0 in our paper)
+-B is the contribution threshold (called B in our paper)
+-C is the abundance threshold (called c_1 in our paper)
+
+Decision function zero re-implements diginorms decision function and only takes 
+'-k' and '-C' (same meaning as for diginorm; to really work like diginorm, you have
+to specify '-n', too)
+
+Decision function 3 implements an simpler version of number 6 without usage of
+phred scores. We recommend it for fasta files. It takes options '-k', '-A', '-B'
+and  '-C' with the same meaning as above.
+
+The other functions where created during our research and are not recommended for
+real usage.
+
+N handling
+----------
+
+The letter 'N' is used as a wildcard when the Illimina can't decide for a nucleotide.
+K-mers containing a 'N' will not be counted by default; this can be changed with '-n',
+but should only used for comparison with diginorm.
+You can limit the number of 'N' in a (paired) read using option '-N x'; all reads 
+containing more than x 'N' will be dropped without further analysis. For our paper,
+we used '-N 10'.  
