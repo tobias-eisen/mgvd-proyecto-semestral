@@ -1,2 +1,0 @@
-# KrakenUniq v1.0.4 DATE:2025-12-09T13:52:18Z DB:/mnt/data/standard_db DB_SIZE:404451462724 WD:/mgvd
-# CL:/opt/conda/bin/krakenuniq --db /mnt/data/standard_db --threads 8 --report-file REPORTFILE_ibd.tsv --paired --check-names /mnt/data/ibd/ERR10101389_1.fastq.gz_keep.gz /mnt/data/ibd/ERR10101389_2.fastq.gz_keep.gz
