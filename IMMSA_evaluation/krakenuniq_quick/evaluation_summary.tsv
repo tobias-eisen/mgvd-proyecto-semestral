@@ -1,0 +1,2 @@
+Dataset	Genus_Precision	Genus_Recall	Genus_F1	Genus_AUPR	Species_Precision	Species_Recall	Species_F1	Species_AUPR	Total_Reads	Runtime_sec
+ABRF_MGRG_10ng	0.0086	1.0000	0.0171	1.0000	0.0036	1.0000	0.0071	0.9183	1584770	26643.44
