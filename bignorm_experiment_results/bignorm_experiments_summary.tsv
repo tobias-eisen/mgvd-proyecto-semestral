@@ -1,0 +1,2 @@
+read_file	paired_file	param_desc	decision_func	k	Q	A	B	C	N	input_size_bytes	output_size_bytes	output_files	reads_processed	reads_accepted	reads_kept_pct	fp	runtime_s	exit_code	log_file
+BMI_bmi_reads.fasta.gz	N/A	baseline_fasta	3	31	N/A	3	5	20	10	214172713	0	BMI_bmi_reads_baseline_fasta.fq.gz	5541101	5152633	92.99	0.038000	13632.00	0	BMI_bmi_reads.fasta.gz_baseline_fasta_log.txt

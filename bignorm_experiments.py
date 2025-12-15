@@ -121,23 +121,6 @@ def count_reads_in_file(filepath):
         return 0
 
 
-def detect_paired_read(filepath):
-    """Detect if a read file has a paired mate based on naming convention."""
-    # Common patterns: *_1.fq.gz / *_2.fq.gz, *_R1.fq.gz / *_R2.fq.gz, etc.
-    base = os.path.basename(filepath)
-    
-    # Check if it's the first in a pair
-    if re.search(r'[_\.]1\.f(ast)?q(\.gz)?$', base) or re.search(r'[_\.]R1[_\.]f(ast)?q(\.gz)?$', base):
-        # Try to find the paired file
-        paired = re.sub(r'([_\.])1(\.f(ast)?q(\.gz)?)$', r'\g<1>2\2', base)
-        paired = re.sub(r'([_\.])R1([_\.])f(ast)?q(\.gz)?$', r'\1R2\2f\3q\4', paired)
-        paired_path = os.path.join(os.path.dirname(filepath), paired)
-        if os.path.exists(paired_path):
-            return paired_path
-    
-    return None
-
-
 def is_fastq(filepath):
     """Check if file is FASTQ format (vs FASTA)."""
     # Check by extension first
@@ -288,8 +271,7 @@ def run_bignorm_experiment(read_file, params, paired_file=None):
             cwd=os.path.dirname(read_file),
             stdout=subprocess.PIPE,
             stderr=subprocess.STDOUT,
-            text=True,
-            timeout=7200  # 2 hour timeout
+            text=True
         )
         elapsed_time = time.time() - start_time
         
@@ -488,57 +470,11 @@ def main():
         print("Please ensure /mnt/data/IMMSA_bignorm_experiments exists with input files")
         return 1
     
-    # Collect input files
-    input_files = []
-    processed_pairs = set()
-    
-    for filename in sorted(os.listdir(EXPERIMENT_DIR)):
-        filepath = os.path.join(EXPERIMENT_DIR, filename)
-        
-        # Skip non-sequence files
-        if not (filename.endswith('.fq.gz') or filename.endswith('.fq') or 
-                filename.endswith('.fastq.gz') or filename.endswith('.fastq') or
-                filename.endswith('.fa.gz') or filename.endswith('.fa') or
-                filename.endswith('.fasta.gz') or filename.endswith('.fasta')):
-            continue
-        
-        # Skip if specific file requested and this isn't it
-        if args.file and filename != args.file:
-            continue
-        
-        # Skip already-processed output files
-        if '_keep' in filename:
-            continue
-        
-        # Check for paired reads
-        paired = detect_paired_read(filepath)
-        
-        if paired:
-            # Skip if we already processed this pair
-            pair_key = tuple(sorted([filepath, paired]))
-            if pair_key in processed_pairs:
-                continue
-            processed_pairs.add(pair_key)
-            input_files.append((filepath, paired))
-        else:
-            input_files.append((filepath, None))
-    
-    if not input_files:
-        print(f"Error: No valid input files found in {EXPERIMENT_DIR}")
-        return 1
-    
     print(f"\n{'='*80}")
     print(f"Bignorm Normalization Experiments")
     print(f"{'='*80}")
     print(f"Input directory: {EXPERIMENT_DIR}")
     print(f"Output directory: {OUTPUT_DIR}")
-    print(f"Found {len(input_files)} input file(s)")
-    
-    for read_file, paired_file in input_files:
-        if paired_file:
-            print(f"  - {os.path.basename(read_file)} + {os.path.basename(paired_file)} (paired)")
-        else:
-            print(f"  - {os.path.basename(read_file)} (unpaired)")
     
     if args.baseline_only:
         print("\nRunning BASELINE ONLY experiments")
@@ -557,17 +493,43 @@ def main():
         total_experiments = 0
         successful_experiments = 0
         
-        # Run experiments for each input file
-        for read_file, paired_file in input_files:
-            is_fq = is_fastq(read_file)
+        # Process files directly
+        for filename in sorted(os.listdir(EXPERIMENT_DIR)):
+            filepath = os.path.join(EXPERIMENT_DIR, filename)
+            
+            # Skip non-sequence files
+            if not (filename.endswith('.fq.gz') or filename.endswith('.fq') or 
+                    filename.endswith('.fastq.gz') or filename.endswith('.fastq') or
+                    filename.endswith('.fa.gz') or filename.endswith('.fa') or
+                    filename.endswith('.fasta.gz') or filename.endswith('.fasta')):
+                continue
+            
+            # Skip if specific file requested and this isn't it
+            if args.file and filepath != args.file:
+                continue
+            
+            # Skip already-processed output files or R2 files
+            if '_keep' in filename or 'R2' in filename:
+                continue
+            
+            # Determine if paired
+            paired_file = None
+            if 'R1' in filename:
+                r2_file = filepath.replace('R1', 'R2')
+                if os.path.isfile(r2_file):
+                    paired_file = r2_file
+            
+            # Select parameter sets based on file format
+            is_fq = is_fastq(filepath)
             param_sets = PARAMETER_SETS if is_fq else PARAMETER_SETS_FASTA
             
             if args.baseline_only:
                 param_sets = [p for p in param_sets if 'baseline' in p['desc']]
             
+            # Run experiments for this file
             for params in param_sets:
                 total_experiments += 1
-                result = run_bignorm_experiment(read_file, params, paired_file)
+                result = run_bignorm_experiment(filepath, params, paired_file)
                 
                 if result and result['exit_code'] == 0:
                     successful_experiments += 1
