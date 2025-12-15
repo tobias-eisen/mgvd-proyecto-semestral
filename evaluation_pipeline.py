@@ -142,7 +142,7 @@ def calc_metrics(pred_counts, gt_taxa, gt_taxids, total_reads):
 
 def eval_classification(dataset, eval_dir):
     """Evaluate KrakenUniq classification against ground truth and return metrics."""
-    report_fp = os.path.join(eval_dir, dataset+"_REPORT.txt")
+    report_fp = os.path.join(eval_dir, dataset+"_REPORT.tsv")
     gt_genus_fp = os.path.join(GT_GENUS_DIR, dataset+"_TRUTH.txt")
     gt_species_fp = os.path.join(GT_SPECIES_DIR, dataset+"_TRUTH.txt")
 
@@ -186,13 +186,13 @@ def save_metrics(result, file_handle):
     file_handle.write(f"{result['genus']['f1']:.4f}\t{result['genus']['aupr']:.4f}\t")
     file_handle.write(f"{result['species']['precision']:.4f}\t{result['species']['recall']:.4f}\t")
     file_handle.write(f"{result['species']['f1']:.4f}\t{result['species']['aupr']:.4f}\t")
-    file_handle.write(f"{result['total_reads']}\t{result['runtime']:.2f}\n")
+    file_handle.write(f"{result['total_reads']}\t{result['runtime']}\n")
     file_handle.flush()
     
     # Print metrics
     print(f"  Genus   - P: {result['genus']['precision']:.3f}, R: {result['genus']['recall']:.3f}, F1: {result['genus']['f1']:.3f}, AUPR: {result['genus']['aupr']:.3f}")
     print(f"  Species - P: {result['species']['precision']:.3f}, R: {result['species']['recall']:.3f}, F1: {result['species']['f1']:.3f}, AUPR: {result['species']['aupr']:.3f}")
-    print(f"  Runtime: {result['runtime']:.2f}s")
+    print(f"  Runtime: {result['runtime']}s")
 
 def get_already_evaluated(eval_path):
     if not os.path.exists(eval_path):
@@ -353,7 +353,7 @@ def main():
                             continue # avoid double evaluating the paired read files
                         if "R1" in fasta_filename and os.path.isfile(fasta_fp.replace("R1", "R2")):
                             dataset = gt_filename.replace("_TRUTH.txt", "")
-                            report_fp = os.path.join(OUTPUT_dir, dataset+"_REPORT.tsv")
+                            report_fp = os.path.join(OUTPUT_DIR, dataset+"_REPORT.tsv")
                             cmd = [
                                 "krakenuniq",
                                 "--paired",
@@ -392,14 +392,13 @@ def main():
                             runtime = time.time() - start_time
                         
                         # Evaluate classification
-                        if os.path.exists(gt_genus_fp) and os.path.exists(gt_species_fp):
-                            print(f"Evaluating {gt_filename}...")
-                            result = eval_classification(dataset, eval_dir=OUTPUT_DIR)
-                            if result:
-                                result['dataset'] = gt_filename.replace("_TRUTH.txt", "")
-                                result['runtime'] = round(runtime)
-                                all_results.append(result)
-                                save_metrics(result, f)
+                        print(f"Evaluating {gt_filename}...")
+                        result = eval_classification(dataset, eval_dir=OUTPUT_DIR)
+                        if result:
+                            result['dataset'] = gt_filename.replace("_TRUTH.txt", "")
+                            result['runtime'] = round(runtime)
+                            all_results.append(result)
+                            save_metrics(result, f)
     
         if save_summary:
             # Calculate averages and standard deviations
