@@ -1,3 +1,4 @@
 process_logs
 IMMSA_evaluation/krakenuniq_std
 IMMSA_evaluation/benchmark_tools
+*_OUTPUT.tsv

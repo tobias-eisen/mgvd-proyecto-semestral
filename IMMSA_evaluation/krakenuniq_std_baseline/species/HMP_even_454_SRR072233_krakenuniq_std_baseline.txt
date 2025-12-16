@@ -1,0 +1,127 @@
+1282	0.030007052031087583	40934	species	Staphylococcus epidermidis
+1280	0.0201649970017872	27508	species	Staphylococcus aureus
+28035	2.1991780938403953e-06	3	species	Staphylococcus lugdunensis
+70255	1.4661187292269302e-06	2	species	Staphylococcus condimenti
+1295	2.1991780938403953e-06	3	species	Staphylococcus schleiferi
+1639	0.01893638950669503	25832	species	Listeria monocytogenes
+1638	7.330593646134651e-07	1	species	Listeria ivanovii
+1396	0.002938101933370768	4008	species	Bacillus cereus
+1428	8.796712375361581e-06	12	species	Bacillus thuringiensis
+1392	7.330593646134651e-06	10	species	Bacillus anthracis
+1405	1.4661187292269302e-06	2	species	Bacillus mycoides
+1404	7.330593646134651e-07	1	species	Bacillus megaterium
+61624	7.330593646134651e-07	1	species	Paenibacillus mucilaginosus
+1313	0.022026234728540785	30047	species	Streptococcus pneumoniae
+1309	0.015859006294047705	21634	species	Streptococcus mutans
+1311	0.0007579833830103229	1034	species	Streptococcus agalactiae
+28037	3.6652968230673255e-06	5	species	Streptococcus mitis
+1303	2.9322374584538604e-06	4	species	Streptococcus oralis
+1307	1.4661187292269302e-06	2	species	Streptococcus suis
+1318	7.330593646134651e-07	1	species	Streptococcus parasanguinis
+1351	0.008921332467345871	12170	species	Enterococcus faecalis
+1596	3.298767140760593e-05	45	species	Lactobacillus gasseri
+759620	7.330593646134651e-07	1	species	Weissella ceti
+1520	0.0066297888935641786	9044	species	Clostridium beijerinckii
+1747	0.05845928514983	79747	species	Cutibacterium acnes
+33010	4.3983561876807905e-06	6	species	Cutibacterium avidum
+1744	1.3928127927655837e-05	19	species	Propionibacterium freudenreichii
+1748	1.7593424750723162e-05	24	species	Acidipropionibacterium acidipropionici
+1661	1.6127306021496233e-05	22	species	Trueperella pyogenes
+43675	2.3457899667630883e-05	32	species	Rothia mucilaginosa
+72000	1.5394246656882766e-05	21	species	Kocuria rhizophila
+28447	2.1991780938403953e-06	3	species	Clavibacter michiganensis
+145458	2.9322374584538604e-06	4	species	Rathayibacter toxicus
+43674	2.9322374584538604e-06	4	species	Jonesia denitrificans
+156978	4.3983561876807905e-06	6	species	Corynebacterium imitans
+43771	4.3983561876807905e-06	6	species	Corynebacterium urealyticum
+65058	7.330593646134651e-07	1	species	Corynebacterium ulcerans
+146827	1.4661187292269302e-06	2	species	Corynebacterium simulans
+1719	7.330593646134651e-07	1	species	Corynebacterium pseudotuberculosis
+1718	7.330593646134651e-07	1	species	Corynebacterium glutamicum
+1717	7.330593646134651e-07	1	species	Corynebacterium diphtheriae
+36809	8.796712375361581e-06	12	species	Mycobacterium abscessus
+1768	7.330593646134651e-07	1	species	Mycobacterium kansasii
+1833	1.0995890469201977e-05	15	species	Rhodococcus erythropolis
+37919	3.6652968230673255e-06	5	species	Rhodococcus opacus
+37332	5.864474916907721e-06	8	species	Nocardia seriolae
+1528099	2.9322374584538604e-06	4	species	Lawsonella clevelandensis
+1912	4.3983561876807905e-06	6	species	Streptomyces hygroscopicus
+54571	1.4661187292269302e-06	2	species	Streptomyces venezuelae
+68570	4.3983561876807905e-06	6	species	Streptomyces albulus
+1355015	2.9322374584538604e-06	4	species	Streptomyces pluripotens
+1888	2.1991780938403953e-06	3	species	Streptomyces albus
+216816	1.4661187292269302e-05	20	species	Bifidobacterium longum
+28025	7.330593646134651e-07	1	species	Bifidobacterium animalis
+1683	6.597534281521186e-06	9	species	Bifidobacterium angulatum
+1681	5.131415552294256e-06	7	species	Bifidobacterium bifidum
+1680	5.131415552294256e-06	7	species	Bifidobacterium adolescentis
+1685	5.131415552294256e-06	7	species	Bifidobacterium breve
+1694	2.1991780938403953e-06	3	species	Bifidobacterium pseudolongum
+1689	2.9322374584538604e-06	4	species	Bifidobacterium dentium
+630129	7.330593646134651e-07	1	species	Bifidobacterium kashiwanohense
+2702	1.5394246656882766e-05	21	species	Gardnerella vaginalis
+33910	1.4661187292269302e-06	2	species	Amycolatopsis mediterranei
+2014	6.597534281521186e-06	9	species	Nocardiopsis dassonvillei
+134676	7.330593646134651e-07	1	species	Actinoplanes sp. SE50/110
+470	0.10351751205516126	141213	species	Acinetobacter baumannii
+106654	8.650100502438888e-05	118	species	Acinetobacter nosocomialis
+48296	4.031826505374058e-05	55	species	Acinetobacter pittii
+287	0.007293207618539364	9949	species	Pseudomonas aeruginosa
+300	1.4661187292269302e-06	2	species	Pseudomonas mendocina
+53408	7.330593646134651e-07	1	species	Pseudomonas citronellolis
+562	0.008154552371960186	11124	species	Escherichia coli
+208962	5.9377808533690674e-05	81	species	Escherichia albertii
+623	3.078849331376553e-05	42	species	Shigella flexneri
+621	2.565707776147128e-05	35	species	Shigella boydii
+624	8.796712375361581e-06	12	species	Shigella sonnei
+57706	2.1991780938403953e-06	3	species	Citrobacter braakii
+546	1.4661187292269302e-06	2	species	Citrobacter freundii
+35703	2.1991780938403953e-06	3	species	Citrobacter amalonaticus
+545	8.063653010748116e-06	11	species	Citrobacter koseri
+28901	8.063653010748116e-06	11	species	Salmonella enterica
+54736	1.4661187292269302e-06	2	species	Salmonella bongori
+550	3.6652968230673255e-06	5	species	Enterobacter cloacae
+1334193	2.1991780938403953e-06	3	species	Enterobacter lignolyticus
+573	7.330593646134651e-07	1	species	Klebsiella pneumoniae
+548	3.6652968230673255e-06	5	species	Klebsiella aerogenes
+1134687	7.330593646134651e-07	1	species	Klebsiella michiganensis
+571	7.330593646134651e-07	1	species	Klebsiella oxytoca
+28141	2.1991780938403953e-06	3	species	Cronobacter sakazakii
+1158459	7.330593646134651e-07	1	species	Kosakonia sacchari
+54291	3.6652968230673255e-06	5	species	Raoultella ornithinolytica
+615	2.1991780938403953e-06	3	species	Serratia marcescens
+40324	1.4661187292269302e-06	2	species	Stenotrophomonas maltophilia
+343	2.9322374584538604e-06	4	species	Xanthomonas translucens
+727	1.4661187292269302e-06	2	species	Haemophilus influenzae
+487	0.02931284481279863	39987	species	Neisseria meningitidis
+485	1.3928127927655837e-05	19	species	Neisseria gonorrhoeae
+486	2.1991780938403953e-06	3	species	Neisseria lactamica
+57975	7.330593646134651e-07	1	species	Burkholderia thailandensis
+329	4.3983561876807905e-06	6	species	Ralstonia pickettii
+305	7.330593646134651e-07	1	species	Ralstonia solanacearum
+75105	7.330593646134651e-07	1	species	Paraburkholderia caribensis
+80869	1.4661187292269302e-06	2	species	Acidovorax citrulli
+285	7.330593646134651e-07	1	species	Comamonas testosteroni
+210	0.020824017370574703	28407	species	Helicobacter pylori
+897	7.330593646134651e-07	1	species	Desulfococcus multivorans
+1063	0.023984969350787966	32719	species	Rhodobacter sphaeroides
+817	3.6652968230673255e-06	5	species	Bacteroides fragilis
+146919	2.1991780938403953e-06	3	species	Salinibacter ruber
+9606	9.383159867052353e-05	128	species	Homo sapiens
+11082	0.0014536567200285015	1983	species	West Nile virus
+1505027	2.565707776147128e-05	35	species	Staphylococcus phage 23MRA
+1505026	1.0262831104588512e-05	14	species	Staphylococcus phage 3MRA
+1464127	2.9322374584538604e-06	4	species	Staphylococcus phage DW2
+1308897	2.1991780938403953e-06	3	species	Staphylococcus phage StauST398-5
+1168613	2.1991780938403953e-06	3	species	Staphylococcus phage TEM123
+1403390	7.330593646134651e-07	1	species	Staphylococcus phage phiRS7
+40521	7.330593646134651e-07	1	species	Listeria phage A118
+1636204	8.796712375361581e-06	12	species	Staphylococcus phage B166
+1698421	4.3983561876807905e-06	6	species	Staphylococcus phage phiJB
+106284	5.864474916907721e-06	8	species	Staphylococcus virus phiETA
+320850	3.6652968230673255e-06	5	species	Staphylococcus virus X2
+320845	2.1991780938403953e-06	3	species	Staphylococcus virus 55
+10708	7.330593646134651e-06	10	species	Pseudomonas virus D3112
+130478	1.4661187292269302e-06	2	species	Staphylococcus virus phiSLT
+648017	1.4661187292269302e-06	2	species	Staphylococcus phage phiPVL-CN125
+32630	0.0015203651222083267	2074	species	synthetic construct

@@ -224,22 +224,26 @@ def convert_krakenuniq_to_ground_truth_format(tool_dir, dataset, tool_name):
 
 
 def plot_benchmark_results(all_tool_results, output_file):
-    """Create a 4-panel barplot showing metrics with standard error bars."""
+    """Create a 2-panel barplot showing F1 score and recall."""
     tools = sorted(all_tool_results.keys())
     n_tools = len(tools)
     
-    # Set up the figure with 2x2 subplots
-    fig, axes = plt.subplots(2, 2, figsize=(16, 12))
+    # Set up the figure with 1x2 subplots
+    fig, axes = plt.subplots(1, 2, figsize=(18, 6))
     fig.suptitle('Benchmark Results by Tool', fontsize=16, fontweight='bold')
     
-    metrics = ['precision', 'recall', 'f1', 'aupr']
-    metric_titles = ['Precision', 'Recall', 'F1 Score', 'AUPR']
+    metrics = ['f1', 'recall']
+    metric_titles = ['F1 Score', 'Recall']
     
     x = np.arange(n_tools)
     width = 0.35
     
+    # Store handles and labels from first plot for shared legend
+    legend_handles = None
+    legend_labels = None
+    
     for idx, (metric, title) in enumerate(zip(metrics, metric_titles)):
-        ax = axes[idx // 2, idx % 2]
+        ax = axes[idx]
         
         genus_means = [all_tool_results[tool][f'genus_{metric}_mean'] for tool in tools]
         genus_stds = [all_tool_results[tool][f'genus_{metric}_std'] for tool in tools]
@@ -253,6 +257,10 @@ def plot_benchmark_results(all_tool_results, output_file):
         bars2 = ax.bar(x + width/2, species_means, width, label='Species',
                        alpha=0.8, color='coral')
         
+        # Capture legend handles from first plot
+        if idx == 0:
+            legend_handles, legend_labels = ax.get_legend_handles_labels()
+        
         # Customize subplot
         ax.set_ylabel(title, fontsize=12, fontweight='bold')
         ax.set_title(f'{title} Comparison', fontsize=13, fontweight='bold')
@@ -264,11 +272,13 @@ def plot_benchmark_results(all_tool_results, output_file):
             if 'krakenuniq' in tools[i].lower():
                 label.set_color('red')
         
-        ax.legend(fontsize=10)
         ax.grid(axis='y', alpha=0.3, linestyle='--')
         ax.set_ylim(0, 1.0)
     
-    plt.tight_layout()
+    # Add a single legend to the right of both plots
+    fig.legend(legend_handles, legend_labels, loc='center right', fontsize=12, frameon=True)
+    
+    plt.tight_layout(rect=[0, 0, 0.92, 1])  # Adjust layout to make room for legend
     plt.savefig(output_file, dpi=300, bbox_inches='tight')
     plt.close()
     print(f"Benchmark plot saved to: {output_file}")
@@ -418,7 +428,9 @@ def main():
         # Find all unique tool names from the genus directory files
         tool_names = set()
         for filename in os.listdir(genus_dir):
-            if filename.endswith('.txt') and '_' in filename:
+            if filename.endswith('.txt') and '_' in filename \
+                and not ('-' in filename or filename.endswith('_TRUTH.txt') \
+                        or filename.endswith('_COMMUNITY.txt')):
                 # Extract tool name from filename (format: <dataset>_<tool>.txt)
                 for dataset in datasets:
                     if filename.startswith(dataset + '_'):

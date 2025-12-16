@@ -45,44 +45,44 @@ os.makedirs(LOGS_DIR, exist_ok=True)
 # From paper: bacteria use m=1024, t=10 (10 GB RAM); eukaryotes m=4096, t=10 (40 GB RAM)
 PARAMETER_SETS = [
     # Default/baseline (from paper bacteria settings)
-    {"k": 31, "Q": 20, "A": 3, "B": 5, "C": 20, "N": 10, "desc": "baseline_bacteria"},
+    {"k": 31, "Q": 20, "A": 3, "B": 5, "C": 20, "N": 10, "desc": "bignorm_default"},
     
     # Vary Q (minimum phred score threshold) - only for decision function 6 (fastq)
-    {"k": 31, "Q": 10, "A": 3, "B": 5, "C": 20, "N": 10, "desc": "low_phred"},
-    {"k": 31, "Q": 30, "A": 3, "B": 5, "C": 20, "N": 10, "desc": "high_phred"},
+    {"k": 31, "Q": 10, "A": 3, "B": 5, "C": 20, "N": 10, "desc": "bignorm_low_phred"},
+    {"k": 31, "Q": 30, "A": 3, "B": 5, "C": 20, "N": 10, "desc": "bignorm_high_phred"},
     
     # Vary A (rarity threshold c_0 in paper)
-    {"k": 31, "Q": 20, "A": 2, "B": 5, "C": 20, "N": 10, "desc": "low_rarity"},
-    {"k": 31, "Q": 20, "A": 5, "B": 5, "C": 20, "N": 10, "desc": "high_rarity"},
+    {"k": 31, "Q": 20, "A": 2, "B": 5, "C": 20, "N": 10, "desc": "bignorm_low_rarity"},
+    {"k": 31, "Q": 20, "A": 5, "B": 5, "C": 20, "N": 10, "desc": "bignorm_high_rarity"},
     
     # Vary B (contribution threshold)
-    {"k": 31, "Q": 20, "A": 3, "B": 3, "C": 20, "N": 10, "desc": "low_contribution"},
-    {"k": 31, "Q": 20, "A": 3, "B": 10, "C": 20, "N": 10, "desc": "high_contribution"},
+    {"k": 31, "Q": 20, "A": 3, "B": 3, "C": 20, "N": 10, "desc": "bignorm_low_contribution"},
+    {"k": 31, "Q": 20, "A": 3, "B": 10, "C": 20, "N": 10, "desc": "bignorm_high_contribution"},
     
     # Vary C (abundance threshold c_1 in paper)
-    {"k": 31, "Q": 20, "A": 3, "B": 5, "C": 10, "N": 10, "desc": "low_abundance"},
-    {"k": 31, "Q": 20, "A": 3, "B": 5, "C": 50, "N": 10, "desc": "high_abundance"},
+    {"k": 31, "Q": 20, "A": 3, "B": 5, "C": 10, "N": 10, "desc": "bignorm_low_abundance"},
+    {"k": 31, "Q": 20, "A": 3, "B": 5, "C": 50, "N": 10, "desc": "bignorm_high_abundance"},
     
     # Vary N (max number of N nucleotides before skipping read)
-    {"k": 31, "Q": 20, "A": 3, "B": 5, "C": 20, "N": 5, "desc": "strict_N"},
-    {"k": 31, "Q": 20, "A": 3, "B": 5, "C": 20, "N": 20, "desc": "relaxed_N"},
+    {"k": 31, "Q": 20, "A": 3, "B": 5, "C": 20, "N": 5, "desc": "bignorm_strict_N"},
+    {"k": 31, "Q": 20, "A": 3, "B": 5, "C": 20, "N": 20, "desc": "bignorm_relaxed_N"},
     
     # Conservative (high quality, strict filtering)
-    {"k": 31, "Q": 30, "A": 5, "B": 10, "C": 50, "N": 5, "desc": "conservative"},
+    {"k": 31, "Q": 30, "A": 5, "B": 10, "C": 50, "N": 5, "desc": "bignorm_conservative"},
     
     # Permissive (lower quality threshold, more reads kept)
-    {"k": 31, "Q": 10, "A": 2, "B": 3, "C": 10, "N": 20, "desc": "permissive"},
+    {"k": 31, "Q": 10, "A": 2, "B": 3, "C": 10, "N": 20, "desc": "bignorm_permissive"},
 ]
 
 # For fasta files (decision function 3), we don't use Q parameter
 PARAMETER_SETS_FASTA = [
-    {"k": 31, "A": 3, "B": 5, "C": 20, "N": 10, "desc": "baseline_fasta"},
-    {"k": 31, "A": 2, "B": 5, "C": 20, "N": 10, "desc": "low_rarity_fasta"},
-    {"k": 31, "A": 5, "B": 5, "C": 20, "N": 10, "desc": "high_rarity_fasta"},
-    {"k": 31, "A": 3, "B": 3, "C": 20, "N": 10, "desc": "low_contribution_fasta"},
-    {"k": 31, "A": 3, "B": 10, "C": 20, "N": 10, "desc": "high_contribution_fasta"},
-    {"k": 31, "A": 3, "B": 5, "C": 10, "N": 10, "desc": "low_abundance_fasta"},
-    {"k": 31, "A": 3, "B": 5, "C": 50, "N": 10, "desc": "high_abundance_fasta"},
+    {"k": 31, "A": 3, "B": 5, "C": 20, "N": 10, "desc": "bignorm_default"},
+    {"k": 31, "A": 2, "B": 5, "C": 20, "N": 10, "desc": "bignorm_low_rarity_fasta"},
+    {"k": 31, "A": 5, "B": 5, "C": 20, "N": 10, "desc": "bignorm_high_rarity_fasta"},
+    {"k": 31, "A": 3, "B": 3, "C": 20, "N": 10, "desc": "bignorm_ow_contribution_fasta"},
+    {"k": 31, "A": 3, "B": 10, "C": 20, "N": 10, "desc": "bignorm_high_contribution_fasta"},
+    {"k": 31, "A": 3, "B": 5, "C": 10, "N": 10, "desc": "bignorm_low_abundance_fasta"},
+    {"k": 31, "A": 3, "B": 5, "C": 50, "N": 10, "desc": "bignorm_high_abundance_fasta"},
 ]
 
 
@@ -285,15 +285,16 @@ def run_bignorm_experiment(read_file, params, paired_file=None):
         # Parse statistics from output
         stats = parse_bignorm_output(result.stdout)
         
-        # Get output file sizes and rename from "_keep" to experiment name
-        # Bignorm appends "_keep.gz" to input filename
+        # Get output file sizes and rename from "_keep.gz" to experiment name
+        # With -z flag, Bignorm always produces _keep.gz files
         if paired_file:
-            out1_keep = re.sub(r'\.(fq|fastq|fa|fasta)(\.gz)?$', r'_keep.fq.gz', read_file)
-            out2_keep = re.sub(r'\.(fq|fastq|fa|fasta)(\.gz)?$', r'_keep.fq.gz', paired_file)
+            # Bignorm creates _keep.gz files
+            out1_keep = read_file + '_keep.gz'
+            out2_keep = paired_file + '_keep.gz'
             
             # Rename to experiment name
-            out1 = re.sub(r'\.(fq|fastq|fa|fasta)(\.gz)?$', f'_{params["desc"]}.fq.gz', read_file)
-            out2 = re.sub(r'\.(fq|fastq|fa|fasta)(\.gz)?$', f'_{params["desc"]}.fq.gz', paired_file)
+            out1 = read_file + f'.{params["desc"]}.gz'
+            out2 = paired_file + f'.{params["desc"]}.gz'
             
             if os.path.exists(out1_keep):
                 os.rename(out1_keep, out1)
@@ -303,10 +304,11 @@ def run_bignorm_experiment(read_file, params, paired_file=None):
             output_size = get_file_size(out1) + get_file_size(out2)
             output_files = f"{os.path.basename(out1)}, {os.path.basename(out2)}"
         else:
-            out1_keep = re.sub(r'\.(fq|fastq|fa|fasta)(\.gz)?$', r'_keep.fq.gz', read_file)
+            # Bignorm creates _keep.gz files
+            out1_keep = read_file + '_keep.gz'
             
             # Rename to experiment name
-            out1 = re.sub(r'\.(fq|fastq|fa|fasta)(\.gz)?$', f'_{params["desc"]}.fq.gz', read_file)
+            out1 = read_file + f'.{params["desc"]}.gz'
             
             if os.path.exists(out1_keep):
                 os.rename(out1_keep, out1)

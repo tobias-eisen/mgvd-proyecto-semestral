@@ -1,0 +1,6 @@
+Metric	Genus	Species
+Precision	0.8333	1.0000
+Recall	1.0000	0.8000
+F1	0.9091	0.8889
+AUPR	0.9183	0.9056
+Total_Reads	688053	688053

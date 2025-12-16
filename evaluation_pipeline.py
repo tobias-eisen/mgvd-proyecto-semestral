@@ -55,8 +55,8 @@ def extract_taxa_by_rank(taxonomy, rank):
     rank_counts = Counter()
     
     for taxid, info in taxonomy.items():
-        if info['rank'] == rank and info['reads'] > 0:
-            rank_counts[taxid] = info['reads']
+        if info['rank'] == rank and info['taxReads'] > 0:
+            rank_counts[taxid] = info['taxReads']
     
     return rank_counts
 
@@ -88,24 +88,10 @@ def parse_ground_truth(gt_file):
     return gt_taxa, gt_taxids
 
 def calc_metrics(pred_counts, gt_taxa, gt_taxids, total_reads):
-    """Calculate precision, recall, F1 score, and AUPR."""
-    all_taxids = set(pred_counts.keys()) | gt_taxids
+    """Calculate precision, recall, F1 score, and AUPR using threshold-based approach."""
+    pred_taxids = set(pred_counts.keys())
     
-    y_true = []
-    y_pred = []
-    scores = []
-    
-    for taxid in all_taxids:
-        y_true.append(1 if taxid in gt_taxids else 0)
-        y_pred.append(1 if taxid in pred_counts else 0)
-        score = pred_counts.get(taxid, 0) / total_reads if total_reads > 0 else 0
-        scores.append(score)
-    
-    y_true = np.array(y_true)
-    y_pred = np.array(y_pred)
-    scores = np.array(scores)
-    
-    if len(y_true) == 0 or np.sum(y_true) == 0:
+    if len(pred_taxids) == 0:
         return {
             'precision': 0.0,
             'recall': 0.0,
@@ -116,24 +102,74 @@ def calc_metrics(pred_counts, gt_taxa, gt_taxids, total_reads):
             'false_negatives': 0
         }
     
-    precision = precision_score(y_true, y_pred, zero_division=0)
-    recall = recall_score(y_true, y_pred, zero_division=0)
-    f1 = f1_score(y_true, y_pred, zero_division=0)
+    # Sort predictions by abundance (descending)
+    sorted_preds = sorted(pred_counts.items(), key=lambda x: x[1], reverse=True)
     
-    if np.sum(y_true) > 0 and len(np.unique(scores)) > 1:
-        precisions, recalls, _ = precision_recall_curve(y_true, scores)
-        aupr = auc(recalls, precisions)
+    # Calculate metrics at each threshold (like in the manuscript)
+    total_positives = len(gt_taxids)
+    f1_scores = []
+    recalls = []
+    precisions = []
+    
+    for j in range(1, len(sorted_preds) + 1):
+        # Consider top j predictions
+        top_j_taxids = set([taxid for taxid, _ in sorted_preds[:j]])
+        tp = len(top_j_taxids & gt_taxids)
+        
+        # Precision = TP / (TP + FP) = TP / j
+        precision = tp / j
+        # Recall = TP / total_positives
+        recall = tp / total_positives if total_positives > 0 else 0
+        
+        precisions.append(precision)
+        recalls.append(recall)
+        
+        # F1 score
+        if precision + recall > 0:
+            f1 = 2 * precision * recall / (precision + recall)
+        else:
+            f1 = 0.0
+        f1_scores.append(f1)
+    
+    # Get maximum F1 score
+    max_f1_idx = np.argmax(f1_scores)
+    max_f1 = f1_scores[max_f1_idx]
+    max_precision = precisions[max_f1_idx]
+    max_recall = recalls[max_f1_idx]
+    
+    # Calculate final TP, FP, FN at max F1 threshold
+    top_taxa = set([taxid for taxid, _ in sorted_preds[:max_f1_idx + 1]])
+    tp = len(top_taxa & gt_taxids)
+    fp = len(top_taxa - gt_taxids)
+    fn = len(gt_taxids - top_taxa)
+    
+    # For AUPR, use all predictions with their scores
+    all_taxids = pred_taxids | gt_taxids
+    y_true = []
+    scores = []
+    
+    for taxid in all_taxids:
+        y_true.append(1 if taxid in gt_taxids else 0)
+        score = pred_counts.get(taxid, 0) / total_reads if total_reads > 0 else 0
+        scores.append(score)
+    
+    y_true = np.array(y_true)
+    scores = np.array(scores)
+    
+    # Calculate AUPR if there are positive examples
+    if np.sum(y_true) > 0:
+        try:
+            precisions_pr, recalls_pr, _ = precision_recall_curve(y_true, scores)
+            aupr = auc(recalls_pr, precisions_pr)
+        except:
+            aupr = 0.0
     else:
         aupr = 0.0
     
-    tp = np.sum((y_true == 1) & (y_pred == 1))
-    fp = np.sum((y_true == 0) & (y_pred == 1))
-    fn = np.sum((y_true == 1) & (y_pred == 0))
-    
     return {
-        'precision': precision,
-        'recall': recall,
-        'f1': f1,
+        'precision': max_precision,
+        'recall': max_recall,
+        'f1': max_f1,
         'aupr': aupr,
         'true_positives': int(tp),
         'false_positives': int(fp),
@@ -233,12 +269,19 @@ def get_already_evaluated(eval_path):
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--method", type=str, default="krakenuniq", help="Change method (yet to implement for Bignorm+Krakenuniq or custom method)")
+    parser.add_argument("--method-suffix", type=str, required=False, help="Method suffix for compressed read files")
     parser.add_argument("--quick", action="store_true", help="Run krakenuniq with --quick flag")
-    parser.add_argument("--no-summary", action="store_true", help="Do not save summary in evaluation output")
-    parser.add_argument("--file", type=str, help="Single ground truth file to evaluate")
+    parser.add_argument("--files-to-evaluate", nargs='+', help="List of ground truth files to evaluate")
     args = parser.parse_args()
-    OUTPUT_DIR = os.path.join(DATASET_NAME+"_evaluation", args.method + "_quick" if args.quick else "")
+    
+    # Build output directory name based on arguments
+    output_dir_name = "krakenuniq"
+    if args.method_suffix:
+        output_dir_name += f"_{args.method_suffix}"
+    if args.quick:
+        output_dir_name += "_quick"
+    
+    OUTPUT_DIR = os.path.join(DATASET_NAME+"_evaluation", output_dir_name)
     os.makedirs(OUTPUT_DIR, exist_ok=True)
     EVAL_OUTPUT = os.path.join(OUTPUT_DIR, "evaluation_summary.tsv")
     PLOT_OUTPUT = os.path.join(OUTPUT_DIR, "evaluation_metrics.png")
@@ -247,15 +290,13 @@ def main():
         print(f"Error: {FASTA_DIR} is not a valid directory")
         return
     
-    # Check for existing evaluations
-    already_evaluated, all_results = get_already_evaluated(EVAL_OUTPUT)
+    # If --files-to-evaluate is given, only evaluate those files
+    gt_files = sorted(os.listdir(GT_GENUS_DIR))
+    if args.files_to_evaluate:
+        gt_files = [f + "_TRUTH.txt" for f in args.files_to_evaluate if f + "_TRUTH.txt" in gt_files]
 
-    # If --file is given set as only file to evaluate
-    save_summary = not args.no_summary
-    gt_files = sorted(os.listdir(GT_GENUS_DIR)) 
-    if args.file and args.file in gt_files:
-        gt_files = [args.file]
-        save_summary = False
+    # Check for existing evaluations
+    already_evaluated, all_results = get_already_evaluated(EVAL_OUTPUT) if os.path.isfile(EVAL_OUTPUT) else set(), []
 
     # Only write header if no evaluations exist
     if len(already_evaluated) == 0:
@@ -275,6 +316,11 @@ def main():
                 continue
             
             for fasta_filename in sorted(os.listdir(FASTA_DIR)):
+                # If method_suffix is specified, only process files with that suffix
+                if args.method_suffix:
+                    if not fasta_filename.endswith(f".{args.method_suffix}.gz"):
+                        continue
+                
                 if fasta_filename.startswith(gt_filename.replace("_TRUTH.txt", "")):
                     fasta_fp = os.path.join(FASTA_DIR, fasta_filename)
                     if os.path.isfile(fasta_fp):
@@ -304,7 +350,7 @@ def main():
                             runtime = time.time() - start_time
                         else:
                             dataset = gt_filename.replace("_TRUTH.txt", "")
-                            report_fp = os.path.join(OUTPUT_DIR, re.sub(r"\.(fq|fast[aq])\.gz$", "", fasta_filename) + "_REPORT.tsv")
+                            report_fp = os.path.join(OUTPUT_DIR, dataset + "_REPORT.tsv")
                             cmd = [
                                 "krakenuniq",
                                 "--db", DB_DIR,
@@ -328,37 +374,6 @@ def main():
                             result['runtime'] = round(runtime)
                             all_results.append(result)
                             save_metrics(result, f)
-    
-        if save_summary:
-            # Calculate averages and standard deviations
-            avg_genus_p, std_genus_p, avg_species_p, std_species_p = calc_summary_measures("precision", all_results)
-            avg_genus_r, std_genus_r, avg_species_r, std_species_r = calc_summary_measures("recall", all_results)
-            avg_genus_f1, std_genus_f1, avg_species_f1, std_species_f1 = calc_summary_measures("f1", all_results)
-            avg_genus_aupr, std_genus_aupr, avg_species_aupr, std_species_aupr = calc_summary_measures("aupr", all_results)
-            avg_total_reads = np.mean([r['total_reads'] for r in all_results])
-            std_total_reads = np.std([r['total_reads'] for r in all_results])
-            avg_runtime = np.mean([r['runtime'] for r in all_results])
-            std_runtime = np.std([r['runtime'] for r in all_results])
-            
-            f.write(f"AVERAGE\t")
-            f.write(f"{avg_genus_p:.4f}\t{avg_genus_r:.4f}\t{avg_genus_f1:.4f}\t{avg_genus_aupr:.4f}\t")
-            f.write(f"{avg_species_p:.4f}\t{avg_species_r:.4f}\t{avg_species_f1:.4f}\t{avg_species_aupr:.4f}\t")
-            f.write(f"{avg_total_reads:.0f}\t{avg_runtime:.2f}\n")
-            f.write(f"STD_DEV\t")
-            f.write(f"{std_genus_p:.4f}\t{std_genus_r:.4f}\t{std_genus_f1:.4f}\t{std_genus_aupr:.4f}\t")
-            f.write(f"{std_species_p:.4f}\t{std_species_r:.4f}\t{std_species_f1:.4f}\t{std_species_aupr:.4f}\t")
-            f.write(f"{std_total_reads:.0f}\t{std_runtime:.2f}\n")
-        
-            # Plot evaluation metrics and print summary
-            plot_metrics(all_results, PLOT_OUTPUT)
-            print(f"\n=== Evaluation Summary ===")
-            print(f"Total datasets: {len(all_results)}")
-            print(f"Results written to: {EVAL_OUTPUT}")
-            print(f"\nAverage Metrics (±StdDev):")
-            print(f"  Genus   - P: {avg_genus_p:.3f}±{std_genus_p:.3f}, R: {avg_genus_r:.3f}±{std_genus_r:.3f}, F1: {avg_genus_f1:.3f}±{std_genus_f1:.3f}, AUPR: {avg_genus_aupr:.3f}±{std_genus_aupr:.3f}")
-            print(f"  Species - P: {avg_species_p:.3f}±{std_species_p:.3f}, R: {avg_species_r:.3f}±{std_species_r:.3f}, F1: {avg_species_f1:.3f}±{std_species_f1:.3f}, AUPR: {avg_species_aupr:.3f}±{std_species_aupr:.3f}")
-            print(f"  Runtime - {avg_runtime:.2f}s ± {std_runtime:.2f}s")
-
     
 if __name__ == '__main__':
     main()

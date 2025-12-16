@@ -1,0 +1,2 @@
+# KrakenUniq v1.0.4 DATE:2025-12-16T20:13:40Z DB:/mnt/data/standard_db DB_SIZE:404451462724 WD:/mgvd
+# CL:/opt/conda/bin/krakenuniq --db /mnt/data/standard_db --threads 8 --report IMMSA_evaluation/krakenuniq_quick/JGI_SRR033549_REPORT.tsv --output IMMSA_evaluation/krakenuniq_quick/JGI_SRR033549_OUTPUT.tsv --quick /mnt/data/IMMSA/JGI_SRR033549.fastq.gz
