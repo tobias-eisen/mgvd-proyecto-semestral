@@ -1,0 +1,62 @@
+Command: /mgvd/Bignorm/Bignorm -u /mnt/data/IMMSA/HMP_even_454_SRR072233.fastq.gz -z -d 6 -k 31 -A 3 -B 5 -C 20 -N 10 -Q 20
+Return code: 0
+Elapsed time: 24868.96 s
+
+Bignorm starting
+----------------
+
+command line:
+/mgvd/Bignorm/Bignorm -u /mnt/data/IMMSA/HMP_even_454_SRR072233.fastq.gz -z -d 6 -k 31 -A 3 -B 5 -C 20 -N 10 -Q 20 
+
+parameters
+	verbosity: 3
+	k:        31
+	strategy: 6, parameter: 20
+	memory strategy: 0, mem_frac: 0.900000
+	input files: 1 unpaired files, 0 paired files:
+		/mnt/data/IMMSA/HMP_even_454_SRR072233.fastq.gz
+reader  started, id: 0
+hasher started, id: 3
+decider started, id: 1
+writer started, id: 2
+i: 28  b_mcount: 34
+reader: 100000 reads processed
+reader: 200000 reads processed
+reader: 300000 reads processed
+reader: 400000 reads processed
+reader: 500000 reads processed
+reader: 600000 reads processed
+reader: 700000 reads processed
+reader: 800000 reads processed
+reader: 893099 reads processed, finished
+reader ended
+hasher ended
+decider ended
+writer ended
+
+	Statistics
+	----------
+
+Reads processed:
+	unpaired: 893099
+	paired  : 0
+	----------
+	total   : 893099
+
+Reads shorter than k (31): 0
+Reads containing more than 10 Ns: 5094
+K-mers containing N: 1881247
+K-mers processed: 239656353 (at least 58413562 different)
+Reads accepted:
+	unpaired: 738841 
+	paired  : 0
+	----------
+	total   : 738841
+
+n_occupied:	524045266
+hist 0:	2160309294
+diff:	0
+Sum over all counters: 1974881884 (197488192.00 per hashline, 3.38 per distinct k-mer)
+fp:	0.000 (base: 0.195)
+reads kept: 82.73 %
+time needed: 24869 s

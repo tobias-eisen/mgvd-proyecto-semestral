@@ -1,0 +1,671 @@
+1580	0.14290779929917666	71737	species	Levilactobacillus brevis
+2292255	1.7928965438930957e-05	9	species	Levilactobacillus suantsaii
+267363	1.593685816793863e-05	8	species	Levilactobacillus zymae
+637971	1.195264362595397e-05	6	species	Levilactobacillus koreensis
+1597	0.03649540520457946	18320	species	Lacticaseibacillus paracasei
+47715	3.785003814885424e-05	19	species	Lacticaseibacillus rhamnosus
+1582	2.589739452290027e-05	13	species	Lacticaseibacillus casei
+57037	2.7889501793892598e-05	14	species	Lacticaseibacillus zeae
+2100821	9.960536354961643e-06	5	species	Lacticaseibacillus chiayiensis
+1255	0.002033941523683167	1021	species	Pediococcus pentosaceus
+1254	1.593685816793863e-05	8	species	Pediococcus acidilactici
+51663	7.968429083969314e-06	4	species	Pediococcus damnosus
+114090	1.9921072709923286e-06	1	species	Pediococcus inopinatus
+187452	1.9921072709923286e-06	1	species	Pediococcus claussenii
+1590	0.0002948318761068646	148	species	Lactiplantibacillus plantarum
+1589	7.968429083969314e-06	4	species	Lactiplantibacillus pentosus
+60520	7.968429083969314e-06	4	species	Lactiplantibacillus paraplantarum
+271881	3.984214541984657e-06	2	species	Lactiplantibacillus argentoratensis
+28038	6.573953994274683e-05	33	species	Latilactobacillus curvatus
+1599	3.187371633587726e-05	16	species	Latilactobacillus sakei
+1613	8.566061265267012e-05	43	species	Limosilactobacillus fermentum
+1598	5.976321812976985e-06	3	species	Limosilactobacillus reuteri
+97478	1.9921072709923286e-06	1	species	Limosilactobacillus mucosae
+35787	1.9921072709923286e-06	1	species	Limosilactobacillus pontis
+47493	1.9921072709923286e-06	1	species	Limosilactobacillus panis
+1584	3.984214541984657e-06	2	species	Lactobacillus delbrueckii
+1587	1.3944750896946299e-05	7	species	Lactobacillus helveticus
+267818	3.984214541984657e-06	2	species	Lactobacillus kefiranofaciens
+508451	3.984214541984657e-06	2	species	Lactobacillus taiwanensis
+52242	3.984214541984657e-06	2	species	Lactobacillus gallinarum
+1596	1.9921072709923286e-06	1	species	Lactobacillus gasseri
+47770	1.9921072709923286e-06	1	species	Lactobacillus crispatus
+83683	1.9921072709923286e-06	1	species	Lactobacillus amylolyticus
+2099788	1.9921072709923286e-06	1	species	Lactobacillus sp. CBA3605
+1581	1.3944750896946299e-05	7	species	Lentilactobacillus buchneri
+33962	7.968429083969314e-06	4	species	Lentilactobacillus kefiri
+1588	7.968429083969314e-06	4	species	Lentilactobacillus hilgardii
+152331	3.984214541984657e-06	2	species	Lentilactobacillus parabuchneri
+1610	1.593685816793863e-05	8	species	Loigolactobacillus coryniformis
+375175	3.984214541984657e-06	2	species	Loigolactobacillus backii
+1624	7.968429083969314e-06	4	species	Ligilactobacillus salivarius
+1601	1.9921072709923286e-06	1	species	Ligilactobacillus agilis
+1622	1.9921072709923286e-06	1	species	Ligilactobacillus murinus
+89059	1.9921072709923286e-06	1	species	Ligilactobacillus acidipiscis
+33964	1.9921072709923286e-06	1	species	Leuconostoc citreum
+33968	1.9921072709923286e-06	1	species	Leuconostoc pseudomesenteroides
+1245	1.9921072709923286e-06	1	species	Leuconostoc mesenteroides
+2698683	1.9921072709923286e-06	1	species	Leuconostoc sp. MTCC 10508
+255248	1.9921072709923286e-06	1	species	Leuconostoc garlicum
+1296540	9.960536354961643e-06	5	species	Paucilactobacillus nenjiangensis
+392416	5.976321812976985e-06	3	species	Companilactobacillus crustorum
+1847728	1.9921072709923286e-06	1	species	Companilactobacillus allii
+148814	3.984214541984657e-06	2	species	Apilactobacillus kunkeei
+2923364	3.984214541984657e-06	2	species	Apilactobacillus sp. SG5_A10
+2419772	1.9921072709923286e-06	1	species	Apilactobacillus bombintestini
+137591	7.968429083969314e-06	4	species	Weissella cibaria
+759620	1.9921072709923286e-06	1	species	Weissella ceti
+1618	5.976321812976985e-06	3	species	Liquorilactobacillus mali
+176292	3.984214541984657e-06	2	species	Secundilactobacillus malefermentans
+240427	3.984214541984657e-06	2	species	Secundilactobacillus paracollinoides
+1614	3.984214541984657e-06	2	species	Fructilactobacillus fructivorans
+53444	1.9921072709923286e-06	1	species	Fructilactobacillus lindneri
+1247	5.976321812976985e-06	3	species	Oenococcus oeni
+304207	3.984214541984657e-06	2	species	Schleiferilactobacillus harbinensis
+2506420	1.9921072709923286e-06	1	species	Periweissella cryptocerci
+51664	1.9921072709923286e-06	1	species	Lapidilactobacillus dextrinicus
+231049	1.9921072709923286e-06	1	species	Furfurilactobacillus rossiae
+1303590	1.9921072709923286e-06	1	species	Bombilactobacillus bombi
+1358	0.033234325601965015	16683	species	Lactococcus lactis
+1359	0.00010757379263358573	54	species	Lactococcus cremoris
+1151742	2.1913179980915613e-05	11	species	Lactococcus taiwanensis
+1366	7.968429083969314e-06	4	species	Lactococcus raffinolactis
+1940789	3.984214541984657e-06	2	species	Lactococcus petauri
+2419773	1.9921072709923286e-06	1	species	Lactococcus allomyrinae
+2816910	1.9921072709923286e-06	1	species	Lactococcus sp. LG1267
+2592653	1.9921072709923286e-06	1	species	Lactococcus protaetiae
+1308	3.5857930877861914e-05	18	species	Streptococcus thermophilus
+1335	3.984214541984657e-06	2	species	Streptococcus equinus
+1341	3.984214541984657e-06	2	species	Streptococcus ratti
+1328	3.984214541984657e-06	2	species	Streptococcus anginosus
+1156431	1.9921072709923286e-06	1	species	Streptococcus ilei
+1501662	1.9921072709923286e-06	1	species	Streptococcus parasuis
+28037	1.9921072709923286e-06	1	species	Streptococcus mitis
+1302	1.9921072709923286e-06	1	species	Streptococcus gordonii
+1304	1.9921072709923286e-06	1	species	Streptococcus salivarius
+1329	1.9921072709923286e-06	1	species	Streptococcus canis
+1348	1.9921072709923286e-06	1	species	Streptococcus parauberis
+82348	1.9921072709923286e-06	1	species	Streptococcus pluranimalium
+1351	1.9921072709923286e-06	1	species	Enterococcus faecalis
+1352	7.968429083969314e-06	4	species	Enterococcus faecium
+357441	1.9921072709923286e-06	1	species	Enterococcus lactis
+81947	1.9921072709923285e-05	10	species	Vagococcus lutrae
+633807	1.9921072709923286e-06	1	species	Vagococcus penaei
+51669	1.9921072709923286e-06	1	species	Tetragenococcus halophilus
+2496265	1.9921072709923286e-06	1	species	Jeotgalibaca ciconiae
+174587	1.9921072709923286e-06	1	species	Carnobacterium viridans
+1396	0.00016733701076335558	84	species	Bacillus cereus
+1405	7.968429083969314e-05	40	species	Bacillus mycoides
+1428	5.3786896316792864e-05	27	species	Bacillus thuringiensis
+1392	1.593685816793863e-05	8	species	Bacillus anthracis
+2026186	1.7928965438930957e-05	9	species	Bacillus paranthracis
+1890302	9.960536354961643e-06	5	species	Bacillus wiedmannii
+2026193	7.968429083969314e-06	4	species	Bacillus nitratireducens
+155322	3.984214541984657e-06	2	species	Bacillus toyonensis
+2026190	5.976321812976985e-06	3	species	Bacillus mobilis
+2053832	5.976321812976985e-06	3	species	Bacillus sp. HBCD-sjtu
+2026191	3.984214541984657e-06	2	species	Bacillus luti
+2026189	3.984214541984657e-06	2	species	Bacillus albus
+580165	1.9921072709923286e-06	1	species	Bacillus cytotoxicus
+64104	1.9921072709923286e-06	1	species	Bacillus pseudomycoides
+2576356	2.1913179980915613e-05	11	species	Bacillus sp. FDAARGOS_527
+2529386	2.1913179980915613e-05	11	species	Bacillus sp. SYJ
+2709784	3.984214541984657e-06	2	species	Bacillus sp. KH172YL63
+2587848	3.984214541984657e-06	2	species	Bacillus sp. THAF10
+1071078	1.9921072709923286e-06	1	species	Bacillus sp. NSP9.1
+2851015	1.9921072709923286e-06	1	species	Bacillus sp. 7D3
+2760090	1.9921072709923286e-06	1	species	Bacillus sp. PAMC26568
+2660750	1.9921072709923286e-06	1	species	Bacillus sp. A260
+2499213	1.9921072709923286e-06	1	species	Bacillus sp. BD59S
+492670	1.9921072709923285e-05	10	species	Bacillus velezensis
+1390	1.9921072709923286e-06	1	species	Bacillus amyloliquefaciens
+260554	3.984214541984657e-06	2	species	Bacillus halotolerans
+1402	1.9921072709923286e-06	1	species	Bacillus licheniformis
+227866	1.9921072709923286e-06	1	species	Bacillus tequilensis
+561879	5.976321812976985e-06	3	species	Bacillus safensis
+1664069	3.984214541984657e-06	2	species	Bacillus glycinifermentans
+293387	3.984214541984657e-06	2	species	Bacillus altitudinis
+1455	1.9921072709923286e-06	1	species	Bacillus badius
+1471	1.9921072709923286e-06	1	species	Bacillus methanolicus
+1479	1.9921072709923286e-06	1	species	Bacillus smithii
+2613334	7.968429083969314e-05	40	species	Anoxybacillus sediminis
+198467	3.984214541984657e-06	2	species	Anoxybacillus gonensis
+294699	1.9921072709923286e-06	1	species	Anoxybacillus amylolyticus
+1426	1.9921072709923285e-05	10	species	Parageobacillus thermoglucosidasius
+153151	3.984214541984657e-06	2	species	Parageobacillus toebii
+81408	3.984214541984657e-06	2	species	Parageobacillus caldoxylosilyticus
+2916802	3.984214541984657e-06	2	species	Parageobacillus sp. KH3-4
+129338	5.976321812976985e-06	3	species	Geobacillus subterraneus
+1422	1.9921072709923286e-06	1	species	Geobacillus stearothermophilus
+279826	7.968429083969314e-06	4	species	Mesobacillus foraminis
+2880221	1.9921072709923286e-06	1	species	Mesobacillus sp. S13
+1404	3.984214541984657e-06	2	species	Priestia megaterium
+284581	1.9921072709923286e-06	1	species	Priestia koreensis
+2594883	7.968429083969314e-06	4	species	Radiobacillus deserti
+2866627	3.984214541984657e-06	2	species	Hydrogenibacillus sp. N12
+163877	1.9921072709923286e-06	1	species	Virgibacillus necropolis
+2831673	1.9921072709923286e-06	1	species	Virgibacillus sp. NKC19-16
+79880	1.9921072709923286e-06	1	species	Alkalihalobacillus clausii
+2924032	1.9921072709923286e-06	1	species	Alkalihalobacillus sp. LMS39
+421767	1.9921072709923286e-06	1	species	Peribacillus butanolivorans
+152268	1.9921072709923286e-06	1	species	Metabacillus litoralis
+2743000	1.9921072709923286e-06	1	species	Salicibibacter cibarius
+1467	1.9921072709923286e-06	1	species	Lederbergia lenta
+2593652	1.9921072709923286e-06	1	species	Mangrovibacillus cuniculi
+189381	1.9921072709923286e-06	1	species	Rossellomorea marisflavi
+1230341	1.9921072709923286e-06	1	species	Salimicrobium jeotgali
+255247	1.9921072709923286e-06	1	species	Fictibacillus arsenicus
+2796470	7.171586175572383e-05	36	species	Brevibacillus composti
+2895522	4.781057450381588e-05	24	species	Brevibacillus sp. MMS20-4M-10-Y
+2738979	7.968429083969314e-06	4	species	Brevibacillus sp. HD3.3A
+2738867	3.984214541984657e-06	2	species	Brevibacillus sp. DP1.3A
+2496837	4.781057450381588e-05	24	species	Brevibacillus marinus
+51101	2.589739452290027e-05	13	species	Brevibacillus agri
+1393	1.7928965438930957e-05	9	species	Brevibacillus brevis
+54911	2.390528725190794e-05	12	species	Brevibacillus choshinensis
+1465	3.984214541984657e-06	2	species	Brevibacillus laterosporus
+54914	3.984214541984657e-06	2	species	Brevibacillus parabrevis
+54913	3.984214541984657e-06	2	species	Brevibacillus formosus
+1695218	9.960536354961643e-06	5	species	Paenibacillus sp. 32O-W
+2023772	5.976321812976985e-06	3	species	Paenibacillus sp. RUD330
+1870819	3.984214541984657e-06	2	species	Paenibacillus sp. BIHB4019
+2282849	3.984214541984657e-06	2	species	Paenibacillus sp. H1-7
+2660554	3.984214541984657e-06	2	species	Paenibacillus sp. B01
+2211212	1.9921072709923286e-06	1	species	Paenibacillus sp. DCT19
+2741301	1.9921072709923286e-06	1	species	Paenibacillus sp. URB8-2
+61624	1.593685816793863e-05	8	species	Paenibacillus mucilaginosus
+44251	5.976321812976985e-06	3	species	Paenibacillus durus
+162209	7.968429083969314e-06	4	species	Paenibacillus naphthalenovorans
+562959	5.976321812976985e-06	3	species	Paenibacillus cellulositrophicus
+2565926	3.984214541984657e-06	2	species	Paenibacillus algicola
+2704463	3.984214541984657e-06	2	species	Paenibacillus rhizovicinus
+1472	3.984214541984657e-06	2	species	Paenibacillus pabuli
+1464	3.984214541984657e-06	2	species	Paenibacillus larvae
+1870820	3.984214541984657e-06	2	species	Paenibacillus ihbetae
+172713	3.984214541984657e-06	2	species	Paenibacillus kribbensis
+1462996	3.984214541984657e-06	2	species	Paenibacillus yonginensis
+373687	1.9921072709923286e-06	1	species	Paenibacillus sonchi
+44252	1.9921072709923286e-06	1	species	Paenibacillus macerans
+2704462	1.9921072709923286e-06	1	species	Paenibacillus lycopersici
+2509456	1.9921072709923286e-06	1	species	Paenibacillus protaetiae
+2810347	1.9921072709923286e-06	1	species	Paenibacillus tianjinensis
+79263	1.9921072709923286e-06	1	species	Paenibacillus chitinolyticus
+1126833	1.9921072709923286e-06	1	species	Paenibacillus beijingensis
+189426	1.9921072709923286e-06	1	species	Paenibacillus odorifer
+1178515	1.9921072709923286e-06	1	species	Paenibacillus swuensis
+116718	1.9921072709923286e-06	1	species	Paenibacillus azoreducens
+1619153	1.9921072709923286e-06	1	species	Cohnella sp. LGH
+2598458	1.9921072709923286e-06	1	species	Cohnella cholangitidis
+2583377	3.984214541984657e-06	2	species	Saccharibacillus brassicae
+1500254	3.984214541984657e-06	2	species	Aneurinibacillus soli
+1280	1.7928965438930957e-05	9	species	Staphylococcus aureus
+283734	1.9921072709923286e-06	1	species	Staphylococcus pseudintermedius
+2708346	3.984214541984657e-06	2	species	Jeotgalicoccus sp. WY2
+407035	1.9921072709923286e-06	1	species	Salinicoccus halodurans
+2743772	5.976321812976985e-06	3	species	Effusibacillus dendaii
+1214604	5.976321812976985e-06	3	species	Tumebacillus algifaecis
+1450	5.976321812976985e-06	3	species	Alicyclobacillus acidoterrestris
+2490858	9.960536354961643e-06	5	species	Staphylospora marina
+1125966	5.976321812976985e-06	3	species	Polycladomyces abyssicola
+37482	3.984214541984657e-06	2	species	Laceyella sacchari
+1639	7.968429083969314e-06	4	species	Listeria monocytogenes
+1642	5.976321812976985e-06	3	species	Listeria innocua
+2233542	5.976321812976985e-06	3	species	Planococcus halotolerans
+192421	3.984214541984657e-06	2	species	Planococcus maritimus
+2048654	1.9921072709923286e-06	1	species	Solibacillus sp. R5-41
+2320858	1.9921072709923286e-06	1	species	Paenisporosarcina cavernae
+1428684	1.9921072709923286e-06	1	species	Exiguobacterium alkaliphilum
+2735868	1.9921072709923286e-06	1	species	Exiguobacterium sp. Helios
+1491	2.7889501793892598e-05	14	species	Clostridium botulinum
+1551	1.9921072709923286e-06	1	species	Clostridium aurantibutyricum
+1042156	1.9921072709923286e-06	1	species	Clostridium sp. SY8519
+2780922	1.9921072709923286e-06	1	species	Solibaculum mannosilyticum
+169435	1.9921072709923286e-06	1	species	Anaerotruncus colihominis
+2041044	1.9921072709923286e-06	1	species	Eubacterium maltosivorans
+52694	1.9921072709923286e-06	1	species	Acetobacterium wieringae
+1505	1.9921072709923286e-06	1	species	Paeniclostridium sordellii
+1496	1.9921072709923286e-06	1	species	Clostridioides difficile
+208479	1.9921072709923286e-06	1	species	Enterocloster bolteae
+2293317	1.9921072709923286e-06	1	species	Candidatus Syntrophocurvum alkaliphilum
+2528593	1.9921072709923286e-06	1	species	Zhaonella formicivorans
+2751313	1.9921072709923286e-06	1	species	Koleobacter methoxysyntrophicus
+1852374	1.9921072709923286e-06	1	species	Ezakiella massiliensis
+1648	1.9921072709923286e-06	1	species	Erysipelothrix rhusiopathiae
+1982626	1.9921072709923286e-06	1	species	Faecalibacillus intestinalis
+1555112	1.9921072709923286e-06	1	species	Limnochorda pilosa
+484770	1.9921072709923286e-06	1	species	Pelosinus sp. UFO1
+544580	0.00015339225986640929	77	species	Actinomyces oris
+111015	1.9921072709923286e-06	1	species	Actinomyces radicidentis
+675090	1.9921072709923286e-06	1	species	Actinomyces weissii
+2860285	1.9921072709923286e-06	1	species	Clavibacter sp. A6099
+2782167	1.9921072709923286e-06	1	species	Microbacterium luteum
+2419774	5.976321812976985e-06	3	species	Protaetiibacter intestinalis
+2841594	3.984214541984657e-06	2	species	Curtobacterium sp. L6-1
+674079	1.9921072709923286e-06	1	species	Marisediminicola antarctica
+708131	1.9921072709923286e-06	1	species	Aurantimicrobium minutum
+1795630	1.9921072709923286e-06	1	species	Frondihabitans sp. PAMC 28766
+412690	1.9921072709923286e-06	1	species	Microterricola viridarii
+2859226	1.9921072709923286e-06	1	species	Mycetocola spongiae
+2932245	1.9921072709923286e-06	1	species	Leucobacter sp. H25R-14
+1477518	1.9921072709923286e-06	1	species	Arthrobacter sp. D5-1
+1494608	1.9921072709923286e-06	1	species	Arthrobacter sp. PAMC 25486
+2828862	1.9921072709923286e-06	1	species	Arthrobacter sp. Helios
+2895818	1.9921072709923286e-06	1	species	Arthrobacter sp. QL17
+2861279	1.9921072709923286e-06	1	species	Arthrobacter sp. PAMC25284
+2817475	1.9921072709923286e-06	1	species	Arthrobacter jiangjiafuii
+37928	1.9921072709923286e-06	1	species	Arthrobacter crystallopoietes
+37931	1.9921072709923286e-06	1	species	Paenarthrobacter ureafaciens
+2600320	1.9921072709923286e-06	1	species	Nesterenkonia sp. NBAIMH1
+71999	1.9921072709923286e-06	1	species	Kocuria palustris
+2704467	1.9921072709923286e-06	1	species	Cellulomonas sp. H30R-01
+2654547	1.9921072709923286e-06	1	species	Pseudactinotalea sp. HY158
+2283195	1.9921072709923286e-06	1	species	Ornithinimicrobium avium
+2908651	1.9921072709923286e-06	1	species	Ornithinimicrobium sp. INDO-MA30-4
+2594265	1.9921072709923286e-06	1	species	Ornithinimicrobium ciconiae
+2897774	1.9921072709923286e-06	1	species	Ruania sp. LR1S40
+2509457	1.9921072709923286e-06	1	species	Xylanimonas protaetiae
+1703	1.9921072709923286e-06	1	species	Brevibacterium linens
+53358	1.9921072709923286e-06	1	species	Intrasporangium calvum
+100225	1.9921072709923286e-06	1	species	Austwickia chelonae
+1276	1.9921072709923286e-06	1	species	Kytococcus sedentarius
+2306165	3.984214541984657e-06	2	species	Streptomyces sp. CC0208
+2867410	1.9921072709923286e-06	1	species	Streptomyces sp. MA3_2.13
+2942449	1.9921072709923286e-06	1	species	Streptomyces sp. RerS4
+2880933	1.9921072709923286e-06	1	species	Streptomyces sp. BH-MK-02
+2838015	1.9921072709923286e-06	1	species	Streptomyces sp. MG62
+2684469	1.9921072709923286e-06	1	species	Streptomyces sp. SCUT-3
+2875706	3.984214541984657e-06	2	species	Streptomyces gobiensis
+47763	3.984214541984657e-06	2	species	Streptomyces lydicus
+2496836	3.984214541984657e-06	2	species	Streptomyces cyaneochromogenes
+1077946	1.9921072709923286e-06	1	species	Streptomyces hundungensis
+1535768	1.9921072709923286e-06	1	species	Streptomyces lunaelactis
+1690221	1.9921072709923286e-06	1	species	Streptomyces spongiicola
+2282738	1.9921072709923286e-06	1	species	Streptomyces paludis
+73044	1.9921072709923286e-06	1	species	Streptomyces seoulensis
+67267	1.9921072709923286e-06	1	species	Streptomyces alboflavus
+67260	1.9921072709923286e-06	1	species	Streptomyces cinereoruber
+2717324	1.9921072709923286e-06	1	species	Streptomyces liangshanensis
+110505	3.984214541984657e-06	2	species	Mycobacterium heckeshornense
+1767	3.984214541984657e-06	2	species	Mycobacterium intracellulare
+398694	1.9921072709923286e-06	1	species	Mycobacterium shinjukuense
+43348	1.9921072709923286e-06	1	species	Mycobacterium branderi
+146017	1.9921072709923286e-06	1	species	Mycolicibacterium boenickei
+1797	1.9921072709923286e-06	1	species	Mycolicibacterium thermoresistibile
+758802	1.9921072709923286e-06	1	species	Mycolicibacterium litorale
+2736649	1.9921072709923286e-06	1	species	Mycolicibacterium mengxianglii
+480035	3.984214541984657e-06	2	species	Nocardia wallacei
+1824	1.9921072709923286e-06	1	species	Nocardia asteroides
+1823	1.9921072709923286e-06	1	species	Nocardia otitidiscaviarum
+37332	1.9921072709923286e-06	1	species	Nocardia seriolae
+2749991	1.9921072709923286e-06	1	species	Nocardia gipuzkoensis
+1833	5.976321812976985e-06	3	species	Rhodococcus erythropolis
+334542	3.984214541984657e-06	2	species	Rhodococcus qingshengii
+53374	1.9921072709923286e-06	1	species	Corynebacterium coyleae
+38304	1.9921072709923286e-06	1	species	Corynebacterium tuberculostearicum
+2758710	1.9921072709923286e-06	1	species	Gordonia jinghuaiqii
+2935861	1.9921072709923286e-06	1	species	Gordonia sp. PP30
+2778070	1.9921072709923286e-06	1	species	Amycolatopsis sp. FDAARGOS 1241
+2742131	1.9921072709923286e-06	1	species	Amycolatopsis sp. Hca4
+2653857	1.9921072709923286e-06	1	species	Amycolatopsis sp. YIM 10
+33910	1.9921072709923286e-06	1	species	Amycolatopsis mediterranei
+340345	3.984214541984657e-06	2	species	Actinoalloteichus hymeniacidonis
+1470176	1.9921072709923286e-06	1	species	Actinoalloteichus hoggarensis
+2719023	3.984214541984657e-06	2	species	Saccharopolyspora sp. ASAGF58
+2865833	1.9921072709923286e-06	1	species	Pseudonocardia sp. DSM 110487
+1610493	1.9921072709923286e-06	1	species	Tessaracoccus flavus
+2161816	1.9921072709923286e-06	1	species	Tessaracoccus timonensis
+1749	1.9921072709923286e-06	1	species	Acidipropionibacterium jensenii
+2596828	1.9921072709923286e-06	1	species	Microlunatus elymi
+196162	1.9921072709923286e-06	1	species	Nocardioides sp. JS614
+2017486	1.9921072709923286e-06	1	species	Nocardioides sp. S5
+1774216	1.9921072709923286e-06	1	species	Nocardioides rotundus
+2518371	1.9921072709923286e-06	1	species	Nocardioides seonyuensis
+75385	1.9921072709923286e-06	1	species	Micropruina glycogenica
+1993	1.9921072709923286e-06	1	species	Actinomadura madurae
+2750812	1.9921072709923286e-06	1	species	Actinomadura graeca
+2742128	1.9921072709923286e-06	1	species	Actinomadura sp. NAK00032
+2498135	1.9921072709923286e-06	1	species	Streptomonospora litoralis
+1914461	1.9921072709923286e-06	1	species	Micromonospora terminaliae
+47853	1.9921072709923286e-06	1	species	Micromonospora carbonacea
+2024580	1.9921072709923286e-06	1	species	Plantactinospora sp. KBS50
+2108470	1.9921072709923286e-06	1	species	Plantactinospora sp. BC1
+122358	1.9921072709923286e-06	1	species	Actinoplanes ianthinogenes
+77635	1.9921072709923286e-06	1	species	Bifidobacterium subtile
+1858	1.9921072709923286e-06	1	species	Frankia sp. ArI3
+1891644	1.9921072709923286e-06	1	species	Epidermidibacterium keratini
+2722752	3.984214541984657e-06	2	species	Iamia sp. SCSIO 61187
+2789776	1.9921072709923286e-06	1	species	Actinomarinicola tropica
+2051957	1.9921072709923286e-06	1	species	Rubrobacter indicoceani
+496014	1.9921072709923286e-06	1	species	Baekduia soli
+2707299	1.9921072709923286e-06	1	species	Adlercreutzia hattorii
+1608957	1.9921072709923286e-06	1	species	Euzebya pacifica
+1442555	1.9921072709923286e-06	1	species	Synechococcus sp. NOUM97013
+321332	1.9921072709923286e-06	1	species	Synechococcus sp. JA-2-3B'a(2-13)
+1173025	3.984214541984657e-06	2	species	Geitlerinema sp. PCC 7407
+2096	1.9921072709923286e-06	1	species	Mycoplasma gallisepticum
+1541959	1.9921072709923286e-06	1	species	Candidatus Izimaplasma sp. HR1
+2509675	1.9921072709923286e-06	1	species	Ktedonosporobacter rubrisoli
+2710758	1.9921072709923286e-06	1	species	Phototrophicus methaneseepsis
+34	0.22563603004894608	113265	species	Myxococcus xanthus
+1297742	0.000266942374312972	134	species	Myxococcus hansupus
+35	0.0004781057450381588	240	species	Corallococcus macrosporus
+184914	3.785003814885424e-05	19	species	Corallococcus coralloides
+1521117	2.390528725190794e-05	12	species	Corallococcus sp. EGB
+83451	3.785003814885424e-05	19	species	Archangium violaceum
+48	1.9921072709923285e-05	10	species	Archangium gephyra
+43	1.7928965438930957e-05	9	species	Cystobacter fuscus
+2918170	3.984214541984657e-06	2	species	Anaeromyxobacter sp. Red232
+404589	1.9921072709923286e-06	1	species	Anaeromyxobacter sp. Fw109-5
+2918171	1.9921072709923286e-06	1	species	Anaeromyxobacter sp. Red630
+1391653	1.9921072709923286e-06	1	species	Vulgatibacter incomptus
+56	3.984214541984657e-06	2	species	Sorangium cellulosum
+2567896	7.968429083969314e-06	4	species	Polyangium aurulentum
+52	1.9921072709923286e-06	1	species	Chondromyces crocatus
+1391654	3.984214541984657e-06	2	species	Labilithrix luteola
+927083	1.9921072709923286e-06	1	species	Sandaracinus amylolyticus
+641491	1.9921072709923286e-06	1	species	Pseudodesulfovibrio mercurii
+2678688	1.9921072709923286e-06	1	species	Pseudodesulfovibrio cashew
+876	1.9921072709923286e-06	1	species	Desulfovibrio desulfuricans
+631220	1.9921072709923286e-06	1	species	Desulfovibrio sp. G11
+2583823	1.9921072709923286e-06	1	species	Salidesulfovibrio onnuriiensis
+2847991	3.984214541984657e-06	2	species	Geomonas nitrogeniifigens
+2597769	1.9921072709923286e-06	1	species	Geobacter sp. FeAm09
+29542	3.984214541984657e-06	2	species	Syntrophotalea acetylenica
+1986146	1.9921072709923286e-06	1	species	Desulfobulbus oralis
+76517	3.984214541984657e-05	20	species	Campylobacter hominis
+1935204	1.9921072709923286e-06	1	species	[Arcobacter] porcinus
+2894755	1.9921072709923286e-06	1	species	Sulfurimonas sp. HSL-3221
+2864202	0.000133471187156486	67	species	Shewanella sp. FJAT-52076
+2864213	0.00013147907988549367	66	species	Shewanella sp. FJAT-52072
+2864205	7.968429083969314e-06	4	species	Shewanella sp. FJAT-53681
+2864204	5.976321812976985e-06	3	species	Shewanella sp. FJAT-53555
+2698686	5.976321812976985e-06	3	species	Shewanella sp. Arc9-LZ
+2029986	3.984214541984657e-06	2	species	Shewanella sp. WE21
+2864203	1.9921072709923286e-06	1	species	Shewanella sp. FJAT-53532
+2864209	1.9921072709923286e-06	1	species	Shewanella sp. FJAT-54031
+2864211	1.9921072709923286e-06	1	species	Shewanella sp. FJAT-51754
+2775245	1.9921072709923286e-06	1	species	Shewanella sp. WPAGA9
+1173586	0.00024702130160304873	124	species	Shewanella litorisediminis
+1965282	0.00011554222171755504	58	species	Shewanella khirikhana
+38313	2.390528725190794e-05	12	species	Shewanella algae
+2814292	1.195264362595397e-05	6	species	Shewanella cyperi
+24	7.968429083969314e-06	4	species	Shewanella putrefaciens
+712036	7.968429083969314e-06	4	species	Shewanella dokdonensis
+332186	5.976321812976985e-06	3	species	Shewanella xiamenensis
+256839	3.984214541984657e-06	2	species	Shewanella decolorationis
+62322	1.9921072709923286e-06	1	species	Shewanella baltica
+2814294	3.984214541984657e-06	2	species	Shewanella avicenniae
+2814293	3.984214541984657e-06	2	species	Shewanella sedimentimangrovi
+2588449	1.9921072709923286e-06	1	species	Shewanella polaris
+260364	1.9921072709923286e-06	1	species	Shewanella marisflavi
+2829809	1.9921072709923286e-06	1	species	Shewanella yunxiaonensis
+1987584	1.9921072709923286e-06	1	species	Shewanella carassii
+2547970	1.9921072709923286e-06	1	species	Parashewanella tropica
+1917158	3.984214541984657e-06	2	species	Alteromonas sp. RW2A1
+28108	1.9921072709923286e-06	1	species	Alteromonas macleodii
+2785918	1.9921072709923286e-06	1	species	Salinimonas marina
+2686358	1.9921072709923286e-06	1	species	Paraglaciecola sp. L3A3
+2183582	1.9921072709923286e-06	1	species	Saliniradius amylolyticus
+1709477	3.984214541984657e-06	2	species	Pseudoalteromonas sp. R3
+874454	1.9921072709923286e-06	1	species	Pseudoalteromonas arabiensis
+1763536	1.9921072709923286e-06	1	species	Thalassotalea crassostreae
+562	5.976321812976985e-05	30	species	Escherichia coli
+1499973	1.9921072709923286e-06	1	species	Escherichia marmotae
+28901	1.9921072709923286e-06	1	species	Salmonella enterica
+2745895	1.9921072709923286e-06	1	species	Salmonella sp. SJTUF14178
+573	1.195264362595397e-05	6	species	Klebsiella pneumoniae
+1134687	7.968429083969314e-06	4	species	Klebsiella michiganensis
+1463165	1.9921072709923286e-06	1	species	Klebsiella quasipneumoniae
+54291	1.9921072709923286e-06	1	species	Raoultella ornithinolytica
+69218	3.984214541984657e-06	2	species	Enterobacter cancerogenus
+550	1.9921072709923286e-06	1	species	Enterobacter cloacae
+2027919	1.9921072709923286e-06	1	species	Enterobacter cloacae complex sp.
+2478464	3.984214541984657e-06	2	species	Enterobacter oligotrophicus
+2596949	1.9921072709923286e-06	1	species	Enterobacter sp. E76
+497725	1.9921072709923286e-06	1	species	Kosakonia oryzae
+208223	1.9921072709923286e-06	1	species	Kosakonia cowanii
+1778262	1.9921072709923286e-06	1	species	Candidatus Doolittlea endobia
+1778263	1.9921072709923286e-06	1	species	Candidatus Hoaglandella endobia
+1563222	1.9921072709923286e-06	1	species	Citrobacter pasteurii
+563	1.9921072709923286e-06	1	species	Shimwellia blattae
+158822	1.9921072709923286e-06	1	species	Cedecea neteri
+83655	1.9921072709923286e-06	1	species	Leclercia adecarboxylata
+632	1.9921072709923286e-06	1	species	Yersinia pestis
+631	1.9921072709923286e-06	1	species	Yersinia intermedia
+138074	1.9921072709923286e-06	1	species	Serratia symbiotica
+615	1.9921072709923286e-06	1	species	Serratia marcescens
+1510570	1.9921072709923286e-06	1	species	Rahnella victoriana
+2886821	1.9921072709923286e-06	1	species	Pantoea sp. Z09
+592316	1.9921072709923286e-06	1	species	Pantoea sp. At-9b
+66269	1.9921072709923286e-06	1	species	Pantoea stewartii
+1615494	1.9921072709923286e-06	1	species	Mixta intestinalis
+2872648	1.9921072709923286e-06	1	species	Mixta sp. X22927
+215689	1.9921072709923286e-06	1	species	Erwinia sp. Ejp617
+568768	3.984214541984657e-06	2	species	Dickeya poaceiphila
+1201031	1.9921072709923286e-06	1	species	Pectobacterium aroidearum
+585	1.9921072709923286e-06	1	species	Proteus vulgaris
+584	1.9921072709923286e-06	1	species	Proteus mirabilis
+126385	1.9921072709923286e-06	1	species	Providencia alcalifaciens
+582	1.9921072709923286e-06	1	species	Morganella morganii
+2892442	2.589739452290027e-05	13	species	Pseudomonas sp. CIP-10
+1344094	1.9921072709923286e-06	1	species	Pseudomonas sp. HN11
+2829498	1.9921072709923286e-06	1	species	Pseudomonas sp. JS425
+2866626	1.9921072709923286e-06	1	species	Pseudomonas sp. 2hn
+2559074	1.9921072709923286e-06	1	species	Pseudomonas sp. S150
+251699	1.9921072709923286e-06	1	species	Pseudomonas syringae group genomosp. 7
+287	3.984214541984657e-06	2	species	Pseudomonas aeruginosa
+300	1.9921072709923286e-06	1	species	Pseudomonas mendocina
+380021	3.984214541984657e-06	2	species	Pseudomonas protegens
+303	1.9921072709923286e-06	1	species	Pseudomonas putida
+1302376	1.9921072709923286e-06	1	species	Candidatus Pseudomonas adelgestsugas
+587753	1.9921072709923286e-06	1	species	Pseudomonas chlororaphis
+316	1.9921072709923286e-06	1	species	Pseudomonas stutzeri
+319939	1.9921072709923286e-06	1	species	Pseudomonas otitidis
+2842348	1.9921072709923286e-06	1	species	Pseudomonas alvandae
+1749259	1.9921072709923286e-06	1	species	Marinobacter sp. LQ44
+2488665	1.9921072709923286e-06	1	species	Marinobacter sp. NP-4(2019)
+1420916	1.9921072709923286e-06	1	species	Marinobacter similis
+666	5.976321812976985e-06	3	species	Vibrio cholerae
+670	3.984214541984657e-06	2	species	Vibrio parahaemolyticus
+680	1.9921072709923286e-06	1	species	Vibrio campbellii
+691	1.9921072709923286e-06	1	species	Vibrio natriegens
+672	5.976321812976985e-06	3	species	Vibrio vulnificus
+2785123	5.976321812976985e-06	3	species	Vibrio sp. ED002
+1074311	3.984214541984657e-06	2	species	Vibrio alfacsensis
+104609	1.9921072709923286e-06	1	species	Vibrio penaeicida
+300876	1.9921072709923286e-06	1	species	Vibrio europaeus
+28173	1.9921072709923286e-06	1	species	Vibrio nigripulchritudo
+76258	1.9921072709923286e-06	1	species	Vibrio rumoiensis
+675	1.9921072709923286e-06	1	species	Vibrio cincinnatiensis
+2572923	1.9921072709923286e-06	1	species	Vibrio taketomensis
+1891207	1.195264362595397e-05	6	species	Thaumasiovibrio subtropicus
+2907534	3.984214541984657e-06	2	species	Photobacterium sp. TLY01
+2829502	1.9921072709923286e-06	1	species	Photobacterium sp. GJ3
+2778054	3.984214541984657e-06	2	species	Aeromonas sp. FDAARGOS 1405
+2033032	1.9921072709923286e-06	1	species	Aeromonas sp. CA23
+654	3.984214541984657e-06	2	species	Aeromonas veronii
+29489	1.9921072709923286e-06	1	species	Aeromonas enteropelogenes
+648	1.9921072709923286e-06	1	species	Aeromonas caviae
+218936	1.9921072709923286e-06	1	species	Aeromonas simiae
+511062	1.9921072709923286e-06	1	species	Oceanimonas sp. GK1
+2771436	1.9921072709923286e-06	1	species	Thermomonas sp. XSG
+2714945	1.9921072709923286e-06	1	species	Thermomonas sp. HDW16
+2886359	1.9921072709923286e-06	1	species	Stenotrophomonas sp. SI-NJAU-1
+40324	1.9921072709923286e-06	1	species	Stenotrophomonas maltophilia
+2799326	3.984214541984657e-06	2	species	Luteimonas sp. MC1750
+346	1.9921072709923286e-06	1	species	Xanthomonas citri
+56458	1.9921072709923286e-06	1	species	Xanthomonas sacchari
+69	1.9921072709923286e-06	1	species	Lysobacter enzymogenes
+2822368	1.9921072709923286e-06	1	species	Lysobacter sp. CECT 30171
+128785	1.9921072709923286e-06	1	species	Pseudoxanthomonas mexicana
+2911537	1.9921072709923286e-06	1	species	Luteibacter sp. 321
+2780091	1.9921072709923286e-06	1	species	Luteibacter sp. EIF3
+564369	1.9921072709923286e-06	1	species	Luteibacter anthropi
+445710	3.984214541984657e-06	2	species	Dyella thiooxydans
+2778082	1.9921072709923286e-06	1	species	Rhodanobacter sp. FDAARGOS 1247
+2731756	1.9921072709923286e-06	1	species	Teredinibacter purpureus
+86173	3.984214541984657e-06	2	species	Microbulbifer elongatus
+2591606	1.9921072709923286e-06	1	species	Microbulbifer sp. GL-2
+1748242	5.976321812976985e-06	3	species	Spongiibacter taiwanensis
+157779	3.984214541984657e-06	2	species	Kushneria marisflavi
+657387	1.9921072709923286e-06	1	species	Kushneria phosphatilytica
+29570	1.9921072709923286e-06	1	species	Halomonas meridiana
+1821621	1.9921072709923286e-06	1	species	Marinobacterium aestuarii
+518898	1.9921072709923286e-06	1	species	Marinobacterium sediminicola
+207949	1.9921072709923286e-06	1	species	Bermanella marisrubri
+470	9.960536354961643e-06	5	species	Acinetobacter baumannii
+1530123	3.984214541984657e-06	2	species	Acinetobacter seifertii
+40215	1.9921072709923286e-06	1	species	Acinetobacter junii
+34062	1.9921072709923286e-06	1	species	Moraxella osloensis
+1238	5.976321812976985e-06	3	species	Piscirickettsia salmonis
+299583	1.9921072709923286e-06	1	species	Francisella orientalis
+111769	1.9921072709923286e-06	1	species	Thiothrix unzii
+738	1.9921072709923286e-06	1	species	Glaesserella parasuis
+396595	1.9921072709923286e-06	1	species	Thioalkalivibrio sp. K90mix
+2182432	1.9921072709923286e-06	1	species	Spiribacter sp. E85
+1972068	1.9921072709923286e-06	1	species	Sulfurivermis fontis
+1295382	1.9921072709923286e-06	1	species	Methylogaea oryzae
+1173101	1.9921072709923286e-06	1	species	Methylomonas paludis
+2812648	1.9921072709923286e-06	1	species	Methylococcus sp. EFPC2
+2923279	1.9921072709923286e-06	1	species	Ignatzschineria sp. HR5S32
+2291597	1.9921072709923286e-06	1	species	Gallaecimonas mangrovi
+676208	1.9921072709923286e-06	1	species	Candidatus Rickettsiella viridis
+446	1.9921072709923286e-06	1	species	Legionella pneumophila
+2603276	7.968429083969314e-06	4	species	Methylobacterium sp. WL1
+334852	5.976321812976985e-06	3	species	Methylobacterium oryzae
+2202825	3.984214541984657e-06	2	species	Methylobacterium durans
+31998	3.984214541984657e-06	2	species	Methylobacterium radiotolerans
+2202828	1.9921072709923286e-06	1	species	Methylobacterium radiodurans
+410	1.9921072709923286e-06	1	species	Methylobacterium organophilum
+408	9.960536354961643e-06	5	species	Methylorubrum extorquens
+223967	1.9921072709923286e-06	1	species	Methylorubrum populi
+1882682	1.9921072709923286e-06	1	species	Microvirga ossetica
+2917727	1.9921072709923286e-06	1	species	Rhizobium sp. C104
+2806346	1.9921072709923286e-06	1	species	Rhizobium sp. SL42
+1138189	1.9921072709923286e-06	1	species	Rhizobium bangladeshense
+2871820	3.984214541984657e-06	2	species	Shinella oryzae
+110321	1.9921072709923286e-06	1	species	Sinorhizobium medicae
+1969821	1.9921072709923286e-06	1	species	Ciceribacter thiooxidans
+2493668	3.984214541984657e-06	2	species	Mesorhizobium sp. M9A.F.Ca.ET.002.03.1.2
+2493676	1.9921072709923286e-06	1	species	Mesorhizobium sp. M3A.F.Ca.ET.080.04.2.1
+1852022	1.9921072709923286e-06	1	species	Roseitalea porphyridii
+2864102	1.9921072709923286e-06	1	species	Pseudochrobactrum sp. Wa41.01b-1
+83637	1.9921072709923286e-06	1	species	Bradyrhizobium genosp. L
+454601	1.9921072709923286e-06	1	species	Maritalea myrionectae
+2083786	1.9921072709923286e-06	1	species	Devosia sp. I507
+1526658	1.9921072709923286e-06	1	species	Bosea vaviloviae
+686597	1.9921072709923286e-06	1	species	Martelella sp. AD-3
+1938607	7.968429083969314e-06	4	species	Sphingomonas sp. LM7
+1390395	5.976321812976985e-06	3	species	Sphingomonas sp. LK11
+2653203	5.976321812976985e-06	3	species	Sphingomonas sp. CL5.1
+2596913	3.984214541984657e-06	2	species	Sphingomonas sp. NBWT7
+1523415	1.9921072709923286e-06	1	species	Sphingomonas sp. AAP5
+2938948	1.9921072709923286e-06	1	species	Sphingomonas sp. S8-45
+745310	1.9921072709923286e-06	1	species	Sphingomonas sp. MM-1
+2219696	1.9921072709923286e-06	1	species	Sphingomonas sp. FARSPH
+152682	3.984214541984657e-06	2	species	Sphingomonas melonis
+1549858	3.984214541984657e-06	2	species	Sphingomonas taxi
+1045317	1.9921072709923286e-06	1	species	Sphingomonas lutea
+1609977	1.9921072709923286e-06	1	species	Sphingomonas hengshuiensis
+1813879	1.9921072709923286e-06	1	species	Sphingomonas panacisoli
+2319844	1.9921072709923286e-06	1	species	Sphingomonas paeninsulae
+653931	1.9921072709923286e-06	1	species	Sphingomonas alpina
+2759526	1.9921072709923286e-06	1	species	Sphingomonas aliaeris
+2698679	1.9921072709923286e-06	1	species	Sphingomonas changnyeongensis
+1016987	1.9921072709923286e-06	1	species	Novosphingobium sp. THN1
+164608	1.9921072709923286e-06	1	species	Novosphingobium sp. KA1
+2698673	1.9921072709923286e-06	1	species	Novosphingobium decolorationis
+2082188	1.9921072709923286e-06	1	species	Sphingobium sp. YG1
+1921510	1.9921072709923286e-06	1	species	Tardibacter chloracetimidivorans
+2883480	3.984214541984657e-06	2	species	Porphyrobacter sp. GA68
+1896196	1.9921072709923286e-06	1	species	Porphyrobacter sp. LM 6
+39960	1.9921072709923286e-06	1	species	Erythrobacter litoralis
+1348774	1.9921072709923286e-06	1	species	Croceicoccus naphthovorans
+543877	1.9921072709923286e-06	1	species	Pelagerythrobacter marensis
+2768162	1.9921072709923286e-06	1	species	Roseomonas haemaphysalidis
+2768161	1.9921072709923286e-06	1	species	Roseomonas marmotae
+2558360	3.984214541984657e-06	2	species	Oecophyllibacter saccharovorans
+364410	1.9921072709923286e-06	1	species	Granulibacter bethesdensis
+146474	1.9921072709923286e-06	1	species	Acetobacter orientalis
+2771361	1.9921072709923286e-06	1	species	Roseococcus microcysteis
+2785908	1.9921072709923286e-06	1	species	Thalassospira sp. A40-3
+1789672	1.9921072709923286e-06	1	species	Skermanella mucosa
+192	1.9921072709923286e-06	1	species	Azospirillum brasilense
+94	1.9921072709923286e-06	1	species	Stella humosa
+1077935	1.9921072709923286e-06	1	species	Paracoccus zhejiangensis
+2760307	1.9921072709923286e-06	1	species	Paracoccus sp. MC1862
+2065379	1.9921072709923286e-06	1	species	Paracoccus jeotgali
+1826607	1.9921072709923286e-06	1	species	Silicimonas algicola
+1389004	1.9921072709923286e-06	1	species	Sulfitobacter sp. SK011
+1389011	1.9921072709923286e-06	1	species	Sulfitobacter sp. SK025
+1679497	1.9921072709923286e-06	1	species	Caulobacter flavus
+2861282	1.3944750896946299e-05	7	species	Massilia sp. NP310
+2899220	3.984214541984657e-06	2	species	Massilia sp. DM-R-R2A-13
+945844	1.9921072709923286e-06	1	species	Massilia oculi
+2072590	1.9921072709923286e-06	1	species	Massilia armeniaca
+964	1.9921072709923286e-06	1	species	Herbaspirillum seropedicae
+2025949	1.9921072709923286e-06	1	species	Herbaspirillum sp. meg3
+81479	3.984214541984657e-06	2	species	Rhodoferax antarcticus
+2509614	3.984214541984657e-06	2	species	Rhodoferax sediminis
+2714925	1.9921072709923286e-06	1	species	Diaphorobacter sp. HDW4B
+2714924	1.9921072709923286e-06	1	species	Diaphorobacter sp. HDW4A
+160825	1.9921072709923286e-06	1	species	Comamonas koreensis
+363952	1.9921072709923286e-06	1	species	Comamonas thiooxydans
+379895	1.9921072709923286e-06	1	species	Comamonas odontotermitis
+2806347	1.9921072709923286e-06	1	species	Hydrogenophaga sp. SL48
+2565558	1.9921072709923286e-06	1	species	Hydrogenophaga sp. PAMC20947
+2109913	1.9921072709923286e-06	1	species	Melaminivora sp. SC2-9
+2109914	1.9921072709923286e-06	1	species	Ottowia oryzae
+134537	1.9921072709923286e-06	1	species	Paraburkholderia fungorum
+311230	1.9921072709923286e-06	1	species	Paraburkholderia terrae
+119219	1.9921072709923286e-06	1	species	Cupriavidus metallidurans
+47671	1.9921072709923286e-06	1	species	Lautropia mirabilis
+305	1.9921072709923286e-06	1	species	Ralstonia solanacearum
+85698	3.984214541984657e-06	2	species	Achromobacter xylosoxidans
+217203	1.9921072709923286e-06	1	species	Achromobacter spanius
+2082386	1.9921072709923286e-06	1	species	Methylibium sp. Pch-M
+1537400	1.9921072709923286e-06	1	species	Aquitalea aquatilis
+1108595	1.9921072709923286e-06	1	species	Chromobacterium vaccinii
+536	1.9921072709923286e-06	1	species	Chromobacterium violaceum
+1737446	1.9921072709923286e-06	1	species	Chitinibacter fontanus
+607712	3.984214541984657e-06	2	species	Neisseria shayeganii
+504	1.9921072709923286e-06	1	species	Kingella kingae
+502	1.9921072709923286e-06	1	species	Kingella denitrificans
+171865	1.9921072709923286e-06	1	species	Sulfuriferula plumbiphila
+41977	1.9921072709923286e-06	1	species	Azoarcus communis
+1134435	1.9921072709923286e-06	1	species	Thauera humireducens
+1751046	1.9921072709923286e-06	1	species	Fluviibacter phosphoraccumulans
+2686361	1.9921072709923286e-06	1	species	Polaribacter sp. L3A8
+2738844	1.9921072709923286e-06	1	species	Polaribacter pectinis
+2686362	1.9921072709923286e-06	1	species	Cellulophaga sp. L1A9
+2058135	1.9921072709923286e-06	1	species	Olleya sp. Bg11-27
+996	1.9921072709923286e-06	1	species	Flavobacterium columnare
+1411621	1.9921072709923286e-06	1	species	Hymenobacter sedentarius
+1705399	1.9921072709923286e-06	1	species	Hymenobacter monticola
+2607656	1.9921072709923286e-06	1	species	Hymenobacter busanensis
+1492898	1.9921072709923286e-06	1	species	Flavisolibacter tropicus
+29549	1.9921072709923286e-06	1	species	Rhodothermus marinus
+28129	1.9921072709923286e-06	1	species	Prevotella denticola
+2528010	3.984214541984657e-06	2	species	Lignipirellula cremea
+406548	3.984214541984657e-06	2	species	Aquisphaera giovannonii
+1632864	1.9921072709923286e-06	1	species	Planctomyces sp. SH-PL14
+2807512	1.9921072709923286e-06	1	species	Humisphaera borealis
+1307763	1.9921072709923286e-06	1	species	Kiritimatiella glycovorans
+1704307	1.9921072709923286e-06	1	species	Candidatus Xiphinematobacter sp. Idaho Grape
+2798577	7.968429083969314e-06	4	species	Breznakiella homolactica
+42253	3.984214541984657e-06	2	species	Nitrospira moscoviensis
+1936990	1.9921072709923286e-06	1	species	Nitrospira sp. KM1
+2763107	1.9921072709923286e-06	1	species	Alloacidobacterium dinghuense
+2026885	3.984214541984657e-06	2	species	Candidatus Bipolaricaulis anaerobius
+2242	0.001243074937099213	624	species	Halobacterium salinarum
+2902624	1.9921072709923286e-06	1	species	Halobacterium sp. XZYJT26
+2810537	1.9921072709923286e-06	1	species	Halobacterium sp. BOL4-2
+1407499	1.9921072709923286e-06	1	species	Halobacterium hubeiense
+223182	1.9921072709923286e-06	1	species	Halobacterium noricense
+2599399	1.9921072709923286e-06	1	species	Salarchaeum sp. JOR-1
+2884876	1.9921072709923286e-06	1	species	Haladaptatus sp. PSR8
+2747817	1.9921072709923286e-06	1	species	Natronomonas halophila
+1853690	1.9921072709923286e-06	1	species	Halolamina sp. CBA1230
+71998	1.9921072709923286e-06	1	species	Thermococcus pacificus
+9606	9.562114900763177e-05	48	species	Homo sapiens
+32630	0.0003565872015076268	179	species	synthetic construct

@@ -1,0 +1,68 @@
+Command: /mgvd/Bignorm/Bignorm -1 /mnt/data/IMMSA/ABRF_MGRG_1ng_Repli_g_08142015_GTCCGC_L001_R1_001.fastq.gz -2 /mnt/data/IMMSA/ABRF_MGRG_1ng_Repli_g_08142015_GTCCGC_L001_R2_001.fastq.gz -z -d 6 -k 31 -A 3 -B 5 -C 20 -N 10 -Q 20
+Return code: 0
+Elapsed time: 26569.32 s
+
+Bignorm starting
+----------------
+
+command line:
+/mgvd/Bignorm/Bignorm -1 /mnt/data/IMMSA/ABRF_MGRG_1ng_Repli_g_08142015_GTCCGC_L001_R1_001.fastq.gz -2 /mnt/data/IMMSA/ABRF_MGRG_1ng_Repli_g_08142015_GTCCGC_L001_R2_001.fastq.gz -z -d 6 -k 31 -A 3 -B 5 -C 20 -N 10 -Q 20 
+
+parameters
+	verbosity: 3
+	k:        31
+	strategy: 6, parameter: 20
+	memory strategy: 0, mem_frac: 0.900000
+	input files: 0 unpaired files, 1 paired files:
+		/mnt/data/IMMSA/ABRF_MGRG_1ng_Repli_g_08142015_GTCCGC_L001_R1_001.fastq.gz <-> /mnt/data/IMMSA/ABRF_MGRG_1ng_Repli_g_08142015_GTCCGC_L001_R2_001.fastq.gz
+reader  started, id: 0
+hasher started, id: 3
+decider started, id: 2
+writer started, id: 1
+i: 28  b_mcount: 34
+reader: 100000 reads processed
+reader: 200000 reads processed
+reader: 300000 reads processed
+reader: 400000 reads processed
+reader: 500000 reads processed
+reader: 600000 reads processed
+reader: 700000 reads processed
+reader: 800000 reads processed
+reader: 900000 reads processed
+reader: 1000000 reads processed
+reader: 1100000 reads processed
+reader: 1200000 reads processed
+reader: 1300000 reads processed
+reader: 1400000 reads processed
+reader: 1405932 reads processed, finished
+reader ended
+hasher ended
+decider ended
+writer ended
+
+	Statistics
+	----------
+
+Reads processed:
+	unpaired: 0
+	paired  : 1405932
+	----------
+	total   : 1405932
+
+Reads shorter than k (31): 0
+Reads containing more than 10 Ns: 1
+K-mers containing N: 313
+K-mers processed: 759202740 (at least 182706109 different)
+Reads accepted:
+	unpaired: 0 
+	paired  : 915287
+	----------
+	total   : 915287
+
+n_occupied:	1240065065
+hist 0:	1444289495
+diff:	0
+Sum over all counters: 3555999622 (355599968.00 per hashline, 1.95 per distinct k-mer)
+fp:	0.000 (base: 0.462)
+reads kept: 65.10 %
+time needed: 26569 s

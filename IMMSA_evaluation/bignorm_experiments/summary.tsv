@@ -1,0 +1,5 @@
+dataset	param_set	reads_processed	reads_accepted	reads_kept_pct	fp	runtime_s
+ABRF_MGRG_1ng	bignorm_default	1405932	915287	65.10	0.000	26569
+BMI_bmi_reads	bignorm_default	5541101	5152633	92.99	0.038	13632
+HMP_even_454_SRR072233	bignorm_default	893099	738841	82.73	0.000	24869
+JGI_SRR033549	bignorm_default	505962	204104	40.34	0.000	8055

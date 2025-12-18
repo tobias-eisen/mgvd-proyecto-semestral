@@ -1,0 +1,55 @@
+1580	0.13396024842739718	67210	species	Lactobacillus brevis
+1597	0.02344553492414035	11763	species	Lactobacillus paracasei
+1582	0.0002591107319678862	130	species	Lactobacillus casei
+1590	4.9828986916901194e-05	25	species	Lactobacillus plantarum
+28038	2.5911073196788623e-05	13	species	Lactobacillus curvatus
+1613	8.76990169737461e-05	44	species	Lactobacillus fermentum
+1581	1.1958956860056287e-05	6	species	Lactobacillus buchneri
+240427	7.97263790670419e-06	4	species	Lactobacillus paracollinoides
+47715	5.9794784300281435e-06	3	species	Lactobacillus rhamnosus
+1584	1.9931594766760477e-06	1	species	Lactobacillus delbrueckii
+1587	1.3952116336732334e-05	7	species	Lactobacillus helveticus
+1598	3.986318953352095e-06	2	species	Lactobacillus reuteri
+375175	1.9931594766760477e-06	1	species	Lactobacillus backii
+1604	1.9931594766760477e-06	1	species	Lactobacillus amylovorus
+1255	0.0010384360873482209	521	species	Pediococcus pentosaceus
+51663	1.9931594766760477e-06	1	species	Pediococcus damnosus
+187452	3.986318953352095e-06	2	species	Pediococcus claussenii
+1358	0.008090234315828077	4059	species	Lactococcus lactis
+1308	9.96579738338024e-06	5	species	Streptococcus thermophilus
+1314	3.986318953352095e-06	2	species	Streptococcus pyogenes
+1351	7.97263790670419e-06	4	species	Enterococcus faecalis
+1396	0.0012736289055959946	639	species	Bacillus cereus
+1428	5.9794784300281435e-05	30	species	Bacillus thuringiensis
+1405	2.790423267346467e-05	14	species	Bacillus mycoides
+1392	1.594527581340838e-05	8	species	Bacillus anthracis
+86662	5.9794784300281435e-06	3	species	Bacillus weihenstephanensis
+1408	1.9931594766760477e-06	1	species	Bacillus pumilus
+79880	1.9931594766760477e-06	1	species	Bacillus clausii
+61624	5.9794784300281435e-06	3	species	Paenibacillus mucilaginosus
+1464	3.986318953352095e-06	2	species	Paenibacillus larvae
+1406	3.986318953352095e-06	2	species	Paenibacillus polymyxa
+1639	1.9931594766760477e-06	1	species	Listeria monocytogenes
+49338	1.9931594766760477e-06	1	species	Desulfitobacterium hafniense
+1736	1.9931594766760477e-06	1	species	Eubacterium limosum
+1747	3.986318953352095e-06	2	species	Cutibacterium acnes
+1888	3.986318953352095e-06	2	species	Streptomyces albus
+56	1.9931594766760477e-06	1	species	Sorangium cellulosum
+62322	3.986318953352095e-06	2	species	Shewanella baltica
+562	1.9931594766760477e-06	1	species	Escherichia coli
+550	1.9931594766760477e-06	1	species	Enterobacter cloacae
+316	1.9931594766760477e-06	1	species	Pseudomonas stutzeri
+408	9.96579738338024e-06	5	species	Methylobacterium extorquens
+223967	1.9931594766760477e-06	1	species	Methylobacterium populi
+384	1.9931594766760477e-06	1	species	Rhizobium leguminosarum
+364410	1.9931594766760477e-06	1	species	Granulibacter bethesdensis
+463025	1.9931594766760477e-06	1	species	Bordetella bronchialis
+2242	0.01132712530594998	5683	species	Halobacterium salinarum
+51589	1.9931594766760477e-06	1	species	Haloarcula hispanica
+9606	0.0001415143228439994	71	species	Homo sapiens
+11082	0.008183912811231852	4106	species	West Nile virus
+43685	3.986318953352095e-06	2	species	Lactococcus phage r1t
+1229751	3.986318953352095e-06	2	species	Lactococcus phage BM13
+1747287	1.9931594766760477e-06	1	species	Enterococcus phage vB_EfaS_IME198
+552525	1.9931594766760477e-06	1	species	Bacillus virus IEBH
+32630	2.9897392150140718e-05	15	species	synthetic construct

@@ -30,15 +30,12 @@ import gzip
 
 # PATHS
 DATA_DIR = "/mnt/data"
-EXPERIMENT_DIR = os.path.join(DATA_DIR, "IMMSA_bignorm_experiments")
+DATASET_NAME = "IMMSA"
+FASTA_DIR = os.path.join(DATA_DIR, DATASET_NAME)
 BIGNORM_BIN = "/mgvd/Bignorm/Bignorm"
-OUTPUT_DIR = "/mgvd/bignorm_experiment_results"
-SUMMARY_FILE = os.path.join(OUTPUT_DIR, "bignorm_experiments_summary.tsv")
-LOGS_DIR = os.path.join(OUTPUT_DIR, "logs")
+SUMMARY_FILE = None
+LOGS_DIR = None
 
-# Create output directories
-os.makedirs(OUTPUT_DIR, exist_ok=True)
-os.makedirs(LOGS_DIR, exist_ok=True)
 
 # Parameter combinations to test (based on paper and Manual.txt)
 # Paper values: Q_0 (phred threshold), c_0 (rarity threshold A), B (contribution threshold), c_1 (abundance threshold C)
@@ -199,7 +196,7 @@ def parse_bignorm_output(output_text):
     return stats
 
 
-def run_bignorm_experiment(read_file, params, paired_file=None):
+def run_bignorm_experiment(dataset, params, paired_file=None):
     """
     Run a single Bignorm experiment with given parameters.
     
@@ -211,7 +208,7 @@ def run_bignorm_experiment(read_file, params, paired_file=None):
     Returns:
         Dictionary with experiment results and statistics
     """
-    base_name = os.path.basename(read_file)
+    
     is_fq = is_fastq(read_file)
     
     # Determine decision function (6 for fastq, 3 for fasta)
@@ -347,7 +344,7 @@ def run_bignorm_experiment(read_file, params, paired_file=None):
         print(f"  ✓ Completed in {elapsed_time:.1f}s")
         print(f"    Reads: {stats['reads_processed']:,} → {stats['reads_accepted']:,} ({stats['reads_kept_pct']:.2f}%)")
         print(f"    Size: {input_size / 1024**2:.1f} MB → {output_size / 1024**2:.1f} MB")
-        print(f"    FP rate: {stats['fp']:.4f}")
+        print(f"    FP rate: {stats['fp']:.3f}")
         
         return experiment_result
         
@@ -384,62 +381,70 @@ def run_bignorm_experiment(read_file, params, paired_file=None):
 def write_summary_header(f):
     """Write TSV header for summary file."""
     headers = [
-        'read_file',
-        'paired_file',
-        'param_desc',
-        'decision_func',
-        'k',
-        'Q',
-        'A',
-        'B',
-        'C',
-        'N',
-        'input_size_bytes',
-        'output_size_bytes',
-        'output_files',
+        'dataset',
+        'param_set',
         'reads_processed',
         'reads_accepted',
         'reads_kept_pct',
         'fp',
         'runtime_s',
-        'exit_code',
-        'log_file',
     ]
     f.write('\t'.join(headers) + '\n')
 
 
-def write_summary_row(f, result):
-    """Write a result row to the summary TSV."""
-    if result is None:
+def get_existing_results(summary_file):
+    """Load existing results from summary file."""
+    results = {}
+    if not os.path.exists(summary_file):
+        return results
+    
+    with open(summary_file, 'r') as f:
+        lines = f.readlines()
+        if len(lines) <= 1:  # Only header or empty
+            return results
+        
+        for line in lines[1:]:  # Skip header
+            parts = line.strip().split('\t')
+            if len(parts) >= 2:
+                dataset = parts[0]
+                param_set = parts[1]
+                key = (dataset, param_set)
+                results[key] = line  # Store the full line
+    
+    return results
+
+
+def write_summary_row(existing_results, result):
+    """Add or update a result row in existing results dict."""
+    if result is None or result['exit_code'] != 0:
         return
     
+    # Extract dataset name from read_file (remove extensions and R1/R2)
+    dataset = result['read_file']
+    # Remove common extensions
+    dataset = re.sub(r'\.(fq|fastq|fa|fasta)(\.gz)?$', '', dataset)
+    # Remove R1/R2 markers
+    dataset = re.sub(r'_R[12]$', '', dataset)
+    
+    param_set = result['param_desc']
+    key = (dataset, param_set)
+    
+    # Format the row
     row = [
-        str(result['read_file']),
-        str(result['paired_file']),
-        str(result['param_desc']),
-        str(result['decision_func']),
-        str(result['k']),
-        str(result['Q']),
-        str(result['A']),
-        str(result['B']),
-        str(result['C']),
-        str(result['N']),
-        str(result['input_size_bytes']),
-        str(result['output_size_bytes']),
-        str(result['output_files']),
+        dataset,
+        param_set,
         str(result['reads_processed']),
         str(result['reads_accepted']),
         f"{result['reads_kept_pct']:.2f}",
-        f"{result['fp']:.6f}",
-        f"{result['runtime_s']:.2f}",
-        str(result['exit_code']),
-        str(result['log_file']),
+        f"{result['fp']:.3f}",
+        f"{result['runtime_s']:.0f}",
     ]
-    f.write('\t'.join(row) + '\n')
-    f.flush()
+    
+    existing_results[key] = '\t'.join(row) + '\n'
 
 
 def main():
+    global LOGS_DIR, SUMMARY_FILE
     parser = argparse.ArgumentParser(
         description='Run Bignorm normalization experiments with various parameter combinations.',
         formatter_class=argparse.RawDescriptionHelpFormatter,
@@ -457,26 +462,33 @@ def main():
     )
     parser.add_argument('--file', type=str, help='Run only on a specific input file')
     parser.add_argument('--baseline-only', action='store_true', help='Run only baseline parameter set')
-    parser.add_argument('--dry-run', action='store_true', help='Print commands without running')
+    parser.add_argument('--experiment-dir', type=str, help='Specify experiment directory (logs)')
     args = parser.parse_args()
     
+    EXPERIMENT_DIR = args.experiment_dir
+    SUMMARY_FILE = os.path.join(EXPERIMENT_DIR, "summary.tsv")
+    LOGS_DIR = os.path.join(EXPERIMENT_DIR, "logs")
+    # Create output directories
+    os.makedirs(EXPERIMENT_DIR, exist_ok=True)
+    os.makedirs(LOGS_DIR, exist_ok=True)
+
     # Check if Bignorm binary exists
     if not os.path.exists(BIGNORM_BIN):
         print(f"Error: Bignorm binary not found at {BIGNORM_BIN}")
         print("Please compile Bignorm first: cd Bignorm && make")
         return 1
     
-    # Check if experiment directory exists
-    if not os.path.isdir(EXPERIMENT_DIR):
-        print(f"Error: Experiment directory not found: {EXPERIMENT_DIR}")
+    # Check if fasta directory exists
+    if not os.path.isdir(FASTA_DIR):
+        print(f"Error: Fasta directory not found: {FASTA_DIR}")
         print("Please ensure /mnt/data/IMMSA_bignorm_experiments exists with input files")
         return 1
     
     print(f"\n{'='*80}")
     print(f"Bignorm Normalization Experiments")
     print(f"{'='*80}")
-    print(f"Input directory: {EXPERIMENT_DIR}")
-    print(f"Output directory: {OUTPUT_DIR}")
+    print(f"Input directory: {FASTA_DIR}")
+    print(f"Output directory: {EXPERIMENT_DIR}")
     
     if args.baseline_only:
         print("\nRunning BASELINE ONLY experiments")
@@ -484,59 +496,60 @@ def main():
         print(f"\nRunning {len(PARAMETER_SETS)} parameter combinations per FASTQ file")
         print(f"Running {len(PARAMETER_SETS_FASTA)} parameter combinations per FASTA file")
     
-    if args.dry_run:
-        print("\n*** DRY RUN MODE - no experiments will be executed ***")
-        return 0
+    # Load existing results
+    existing_results = get_existing_results(SUMMARY_FILE)
+    print(f"Loaded {len(existing_results)} existing results")
     
-    # Open summary file
-    with open(SUMMARY_FILE, 'w') as summary:
-        write_summary_header(summary)
+    total_experiments = 0
+    successful_experiments = 0
+    
+    # Process files directly
+    for filename in sorted(os.listdir(FASTA_DIR)):
+        filepath = os.path.join(FASTA_DIR, filename)
         
-        total_experiments = 0
-        successful_experiments = 0
+        # Skip non-sequence files
+        if not (filename.endswith('.fq.gz') or filename.endswith('.fq') or 
+                filename.endswith('.fastq.gz') or filename.endswith('.fastq') or
+                filename.endswith('.fa.gz') or filename.endswith('.fa') or
+                filename.endswith('.fasta.gz') or filename.endswith('.fasta')):
+            continue
         
-        # Process files directly
-        for filename in sorted(os.listdir(EXPERIMENT_DIR)):
-            filepath = os.path.join(EXPERIMENT_DIR, filename)
+        # Skip if specific file requested and this isn't it
+        if args.file and filepath != args.file:
+            continue
+        
+        # Skip already-processed output files or R2 files
+        if '_keep' in filename or 'R2' in filename:
+            continue
+        
+        # Determine if paired
+        paired_file = None
+        if 'R1' in filename:
+            r2_file = filepath.replace('R1', 'R2')
+            if os.path.isfile(r2_file):
+                paired_file = r2_file
+        
+        # Select parameter sets based on file format
+        is_fq = is_fastq(filepath)
+        param_sets = PARAMETER_SETS if is_fq else PARAMETER_SETS_FASTA
+        
+        if args.baseline_only:
+            param_sets = [p for p in param_sets if p['desc'] == 'bignorm_default']
+        
+        # Run experiments for this file
+        for params in param_sets:
+            total_experiments += 1
+            result = run_bignorm_experiment(filepath, params, paired_file)
             
-            # Skip non-sequence files
-            if not (filename.endswith('.fq.gz') or filename.endswith('.fq') or 
-                    filename.endswith('.fastq.gz') or filename.endswith('.fastq') or
-                    filename.endswith('.fa.gz') or filename.endswith('.fa') or
-                    filename.endswith('.fasta.gz') or filename.endswith('.fasta')):
-                continue
-            
-            # Skip if specific file requested and this isn't it
-            if args.file and filepath != args.file:
-                continue
-            
-            # Skip already-processed output files or R2 files
-            if '_keep' in filename or 'R2' in filename:
-                continue
-            
-            # Determine if paired
-            paired_file = None
-            if 'R1' in filename:
-                r2_file = filepath.replace('R1', 'R2')
-                if os.path.isfile(r2_file):
-                    paired_file = r2_file
-            
-            # Select parameter sets based on file format
-            is_fq = is_fastq(filepath)
-            param_sets = PARAMETER_SETS if is_fq else PARAMETER_SETS_FASTA
-            
-            if args.baseline_only:
-                param_sets = [p for p in param_sets if 'baseline' in p['desc']]
-            
-            # Run experiments for this file
-            for params in param_sets:
-                total_experiments += 1
-                result = run_bignorm_experiment(filepath, params, paired_file)
-                
-                if result and result['exit_code'] == 0:
-                    successful_experiments += 1
-                
-                write_summary_row(summary, result)
+            if result and result['exit_code'] == 0:
+                successful_experiments += 1
+                write_summary_row(existing_results, result)
+    
+    # Write all results to file (sorted by dataset and param_set)
+    with open(SUMMARY_FILE, 'w') as f:
+        write_summary_header(f)
+        for key in sorted(existing_results.keys()):
+            f.write(existing_results[key])
     
     print(f"\n{'='*80}")
     print(f"Experiments Complete")

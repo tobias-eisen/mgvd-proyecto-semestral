@@ -6,6 +6,7 @@ import os
 from sklearn.metrics import precision_recall_curve, auc, precision_score, recall_score, f1_score
 import sys
 import matplotlib
+import re
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 
@@ -223,14 +224,83 @@ def convert_krakenuniq_to_ground_truth_format(tool_dir, dataset, tool_name):
     return True
 
 
-def plot_benchmark_results(all_tool_results, output_file):
+def load_bignorm_runtimes(bignorm_experiments_dir):
+    """Load Bignorm preprocessing runtimes from summary file."""
+    bignorm_runtimes = {}
+    
+    if not bignorm_experiments_dir:
+        return bignorm_runtimes
+    
+    summary_file = os.path.join(bignorm_experiments_dir, 'summary.tsv')
+    
+    if not os.path.exists(summary_file):
+        print(f"Warning: Bignorm summary file not found: {summary_file}")
+        return bignorm_runtimes
+    
+    with open(summary_file, 'r') as f:
+        lines = f.readlines()
+        if len(lines) <= 1:
+            return bignorm_runtimes
+        
+        for line in lines[1:]:  # Skip header
+            parts = line.strip().split('\t')
+            dataset = parts[0]
+            param_set = parts[1]
+            runtime = int(parts[6])
+            bignorm_runtimes[(dataset, param_set)] = runtime
+    
+    return bignorm_runtimes
+
+
+def load_tool_runtimes(tool_dir, datasets):
+    """Load runtimes from runtimes.tsv or log files in tool directory."""
+    runtimes = {}
+    runtime_file = os.path.join(tool_dir, 'runtimes.tsv')
+    
+    # First try to load from runtimes.tsv
+    if os.path.exists(runtime_file):
+        with open(runtime_file, 'r') as f:
+            lines = f.readlines()
+            if len(lines) > 1:
+                for line in lines[1:]:  # Skip header
+                    parts = line.strip().split('\t')
+                    if len(parts) >= 2:
+                        dataset = parts[0]
+                        runtime = float(parts[1])
+                        runtimes[dataset] = runtime
+        return runtimes
+    
+    # If no runtimes.tsv, try to extract from log files
+    log_dir = os.path.join(tool_dir, 'log')
+    if not os.path.isdir(log_dir):
+        return None  # No runtime data available
+    
+    for dataset in datasets:
+        # Look for .log file and extract processing time
+        log_file = os.path.join(log_dir, f"{dataset}.fastq.krakenuniq.log")
+        if os.path.exists(log_file):
+            with open(log_file, 'r') as f:
+                for line in f:
+                    # Look for "sequences processed in Xs" line
+                    if 'sequences' in line and 'processed in' in line and 's (' in line:
+                        # Format: "505962 sequences (123.11 Mbp) processed in 11.592s (2618.9 Kseq/m, 637.21 Mbp/m)."
+                        match = re.search(r'processed in ([\d.]+)s', line)
+                        if match:
+                            runtime = float(match.group(1))
+                            runtimes[dataset] = runtime
+                            break
+    
+    return runtimes if runtimes else None
+
+
+def plot_metrics_results(all_tool_results, output_file, datasets):
     """Create a 2-panel barplot showing F1 score and recall."""
     tools = sorted(all_tool_results.keys())
     n_tools = len(tools)
     
-    # Set up the figure with 1x2 subplots
-    fig, axes = plt.subplots(1, 2, figsize=(18, 6))
-    fig.suptitle('Benchmark Results by Tool', fontsize=16, fontweight='bold')
+    # Set up the figure with 2x1 subplots (vertical alignment)
+    fig, axes = plt.subplots(2, 1, figsize=(14, 12))
+    fig.suptitle('Benchmark Metrics by Tool', fontsize=20, fontweight='bold')
     
     metrics = ['f1', 'recall']
     metric_titles = ['F1 Score', 'Recall']
@@ -262,10 +332,15 @@ def plot_benchmark_results(all_tool_results, output_file):
             legend_handles, legend_labels = ax.get_legend_handles_labels()
         
         # Customize subplot
-        ax.set_ylabel(title, fontsize=12, fontweight='bold')
-        ax.set_title(f'{title} Comparison', fontsize=13, fontweight='bold')
+        ax.set_ylabel(title, fontsize=16, fontweight='bold')
+        ax.set_title(f'{title} Comparison', fontsize=18, fontweight='bold')
+        ax.set_ylim(0, 1.0)
+        
         ax.set_xticks(x)
-        ax.set_xticklabels(tools, rotation=45, ha='right', fontsize=10)
+        ax.set_xticklabels(tools, rotation=45, ha='right', fontsize=16)
+        
+        # Increase y-axis tick label size
+        ax.tick_params(axis='y', labelsize=14)
         
         # Color krakenuniq tool labels red
         for i, label in enumerate(ax.get_xticklabels()):
@@ -273,15 +348,103 @@ def plot_benchmark_results(all_tool_results, output_file):
                 label.set_color('red')
         
         ax.grid(axis='y', alpha=0.3, linestyle='--')
-        ax.set_ylim(0, 1.0)
     
-    # Add a single legend to the right of both plots
-    fig.legend(legend_handles, legend_labels, loc='center right', fontsize=12, frameon=True)
+    # Add a single legend to the bottom
+    if legend_handles and legend_labels:
+        fig.legend(legend_handles, legend_labels, loc='lower center', fontsize=14, frameon=True, ncol=2, bbox_to_anchor=(0.5, -0.01))
     
-    plt.tight_layout(rect=[0, 0, 0.92, 1])  # Adjust layout to make room for legend
+    # Add datasets text box on the right
+    datasets_text = "Evaluated Datasets:\n" + "\n".join([f"• {ds}" for ds in datasets])
+    fig.text(1.02, 0.5, datasets_text, fontsize=16, va='center', ha='left',
+             bbox=dict(boxstyle='round', facecolor='wheat', alpha=0.5),
+             transform=fig.transFigure)
+    
+    plt.tight_layout(rect=[0, 0.02, 1, 0.97])
     plt.savefig(output_file, dpi=300, bbox_inches='tight')
     plt.close()
-    print(f"Benchmark plot saved to: {output_file}")
+    print(f"Metrics plot saved to: {output_file}")
+
+
+def plot_runtime_results(all_tool_results, output_file, datasets):
+    """Create a separate plot for runtime comparison."""
+    # Filter to only include tools with runtime data
+    tools_with_runtime = [tool for tool in sorted(all_tool_results.keys()) 
+                          if 'runtime_mean' in all_tool_results[tool]]
+    
+    if not tools_with_runtime:
+        print("No tools with runtime data to plot")
+        return
+    
+    n_tools = len(tools_with_runtime)
+    
+    # Set up the figure
+    fig = plt.figure(figsize=(14, 6))
+    ax = plt.gca()
+    
+    x = np.arange(n_tools)
+    width = 0.7
+    
+    # Runtime plot - single bar per tool (total runtime)
+    runtime_means = [all_tool_results[tool]['runtime_mean'] for tool in tools_with_runtime]
+    runtime_stds = [all_tool_results[tool]['runtime_std'] for tool in tools_with_runtime]
+    
+    # Plot runtime data
+    bars = ax.bar(x, runtime_means, width, alpha=0.8, color='forestgreen', yerr=runtime_stds)
+    ax.set_ylabel('Runtime (seconds)', fontsize=16, fontweight='bold')
+    ax.set_title('Runtime Comparison', fontsize=18, fontweight='bold')
+    
+   
+    # Set y-axis limits to leave space for labels at the top
+    max_runtime = max(runtime_means)
+    ax.set_ylim(top=max_runtime * 1.3)
+
+     # Add time labels to the right of bars
+    for i, (bar, runtime_sec, runtime_std) in enumerate(zip(bars, runtime_means, runtime_stds)):
+        hours = int(runtime_sec // 3600)
+        minutes = int((runtime_sec % 3600) // 60)
+        seconds = int(runtime_sec % 60)
+        
+        # Build label based on what units are needed
+        label_parts = []
+        if hours > 0:
+            label_parts.append(f"{hours}h")
+        if hours > 0 or minutes > 0:
+            label_parts.append(f"{minutes}m")
+        label_parts.append(f"{seconds}s")
+        
+        label = ", ".join(label_parts)
+        
+        # Position label to the right of the bar
+        height = bar.get_height() + max_runtime * 0.1
+        x_pos = bar.get_x() + bar.get_width() * 0.55
+        ax.text(x_pos, height,
+                label,
+                ha='left', va='center', fontsize=16, rotation=0, fontweight='bold')
+    
+    
+    ax.set_xticks(x)
+    ax.set_xticklabels(tools_with_runtime, rotation=45, ha='right', fontsize=16)
+    
+    # Increase y-axis tick label size
+    ax.tick_params(axis='y', labelsize=14)
+    
+    # Color krakenuniq tool labels red
+    for i, label in enumerate(ax.get_xticklabels()):
+        if 'krakenuniq' in tools_with_runtime[i].lower():
+            label.set_color('red')
+    
+    ax.grid(axis='y', alpha=0.3, linestyle='--')
+    
+    # Add datasets text box on the right
+    datasets_text = "Evaluated Datasets:\n" + "\n".join([f"• {ds}" for ds in datasets])
+    fig.text(1.02, 0.5, datasets_text, fontsize=16, va='center', ha='left',
+             bbox=dict(boxstyle='round', facecolor='wheat', alpha=0.5),
+             transform=fig.transFigure)
+    
+    plt.tight_layout(rect=[0, 0, 1, 1])
+    plt.savefig(output_file, dpi=300, bbox_inches='tight')
+    plt.close()
+    print(f"Runtime plot saved to: {output_file}")
 
 
 def eval_tool_classification(dataset, tool_dir, tool_name):
@@ -353,9 +516,18 @@ def main():
         help='Directory containing tool outputs to benchmark'
     )
     parser.add_argument(
+        '--bignorm-experiments-dir',
+        help='Directory containing tool outputs to benchmark'
+    )
+    parser.add_argument(
         '--files-to-evaluate',
         nargs='+',
         help='Optional list of dataset names to evaluate (without _TRUTH.txt suffix)'
+    )
+    parser.add_argument(
+        '--krakenuniq-only',
+        action='store_true',
+        help='Only evaluate and plot KrakenUniq variations (skip other tools)'
     )
     
     args = parser.parse_args()
@@ -390,6 +562,11 @@ def main():
     
     print(f"Evaluating {len(datasets)} datasets")
     
+    # Load Bignorm preprocessing runtimes if directory is provided
+    bignorm_runtimes = load_bignorm_runtimes(args.bignorm_experiments_dir)
+    if args.bignorm_experiments_dir and bignorm_runtimes:
+        print(f"Loaded {len(bignorm_runtimes)} Bignorm preprocessing runtimes from {args.bignorm_experiments_dir}")
+    
     # First pass: Convert KrakenUniq reports to ground truth format
     print("\nConverting KrakenUniq reports to ground truth format...")
     for dir_name in os.listdir(args.eval_dir):
@@ -415,6 +592,9 @@ def main():
         
         is_krakenuniq = 'krakenuniq' in dir_name.lower()
         
+        # Load runtimes for this tool
+        tool_runtimes = load_tool_runtimes(tool_dir, datasets)
+        
         # Check for genus/species subdirectories
         genus_dir = os.path.join(tool_dir, 'genus')
         species_dir = os.path.join(tool_dir, 'species')
@@ -428,15 +608,18 @@ def main():
         # Find all unique tool names from the genus directory files
         tool_names = set()
         for filename in os.listdir(genus_dir):
-            if filename.endswith('.txt') and '_' in filename \
-                and not ('-' in filename or filename.endswith('_TRUTH.txt') \
-                        or filename.endswith('_COMMUNITY.txt')):
-                # Extract tool name from filename (format: <dataset>_<tool>.txt)
-                for dataset in datasets:
-                    if filename.startswith(dataset + '_'):
-                        tool_name = filename[len(dataset) + 1:].replace('.txt', '')
-                        tool_names.add(tool_name)
-                        break
+            # Skip special files from tool benchmark
+            skip_keywords = ["average", "max", "median", "priority"]
+            if any(keyword in filename for keyword in skip_keywords) or \
+               filename.endswith('_TRUTH.txt') or filename.endswith('_COMMUNITY.txt'):
+                continue
+            
+            # Extract tool name from filename (format: <dataset>_<tool>.txt)
+            for dataset in datasets:
+                if filename.startswith(dataset + '_'):
+                    tool_name = filename[len(dataset) + 1:].replace('.txt', '')
+                    tool_names.add(tool_name)
+                    break
         
         if not tool_names:
             print(f"  No tool outputs found in {dir_name}")
@@ -446,12 +629,34 @@ def main():
         
         # Evaluate each tool
         for tool_name in sorted(tool_names):
+            # Skip non-KrakenUniq tools if --krakenuniq-only flag is set
+            if args.krakenuniq_only and not is_krakenuniq:
+                continue
+            
             print(f"\n  Evaluating {tool_name}...")
             
             tool_results = []
+            tool_runtimes_list = []
             
             for dataset in datasets:
                 result = eval_tool_classification(dataset, tool_dir, tool_name)
+                
+                # Get runtime for this dataset
+                if tool_runtimes is not None and dataset in tool_runtimes:
+                    dataset_runtime = tool_runtimes[dataset]
+                    
+                    # Check if this tool uses Bignorm preprocessing
+                    match = re.search(r'bignorm_(\w+)', dir_name)
+                    if match:
+                        bignorm_param_set = match.group(0).replace("_quick", "")
+                        print(bignorm_param_set)
+                        # Add Bignorm preprocessing time if available
+                        if bignorm_runtimes and (dataset, bignorm_param_set) in bignorm_runtimes:
+                            bignorm_prep_time = bignorm_runtimes[(dataset, bignorm_param_set)]
+                            dataset_runtime += bignorm_prep_time
+                            print(f"    {dataset}: Added Bignorm preprocessing time ({bignorm_prep_time:.0f}s) for {bignorm_param_set}")
+                    
+                    tool_runtimes_list.append(dataset_runtime)
                 
                 if result:
                     tool_results.append(result)
@@ -467,7 +672,8 @@ def main():
                             f.write(f"AUPR\t{result['genus']['aupr']:.4f}\t{result['species']['aupr']:.4f}\n")
                             f.write(f"Total_Reads\t{result['total_reads']}\t{result['total_reads']}\n")
             
-            if tool_results:
+            # Only include tools that have results for ALL datasets
+            if tool_results and len(tool_results) == len(datasets):
                 all_tool_results[tool_name] = {
                     'n_datasets': len(tool_results),
                     'genus_precision_mean': np.mean([r['genus']['precision'] for r in tool_results]),
@@ -488,6 +694,14 @@ def main():
                     'species_aupr_std': np.std([r['species']['aupr'] for r in tool_results]),
                 }
                 
+                # Add runtime statistics if available
+                if tool_runtimes_list:
+                    all_tool_results[tool_name]['runtime_mean'] = np.mean(tool_runtimes_list)
+                    all_tool_results[tool_name]['runtime_std'] = np.std(tool_runtimes_list)
+                    print(f"    Runtime - Mean: {all_tool_results[tool_name]['runtime_mean']:.0f}s ± {all_tool_results[tool_name]['runtime_std']:.0f}s")
+                else:
+                    print(f"    No runtime data available for {tool_name}")
+                
                 print(f"    Evaluated {len(tool_results)} datasets")
                 print(f"    Genus   - P: {all_tool_results[tool_name]['genus_precision_mean']:.3f}±{all_tool_results[tool_name]['genus_precision_std']:.3f}, "
                       f"R: {all_tool_results[tool_name]['genus_recall_mean']:.3f}±{all_tool_results[tool_name]['genus_recall_std']:.3f}, "
@@ -497,6 +711,8 @@ def main():
                       f"R: {all_tool_results[tool_name]['species_recall_mean']:.3f}±{all_tool_results[tool_name]['species_recall_std']:.3f}, "
                       f"F1: {all_tool_results[tool_name]['species_f1_mean']:.3f}±{all_tool_results[tool_name]['species_f1_std']:.3f}, "
                       f"AUPR: {all_tool_results[tool_name]['species_aupr_mean']:.3f}±{all_tool_results[tool_name]['species_aupr_std']:.3f}")
+            elif tool_results:
+                print(f"    Skipping {tool_name} - only has results for {len(tool_results)}/{len(datasets)} datasets")
             else:
                 print(f"    No results for {tool_name}")
     
@@ -524,9 +740,12 @@ def main():
     print(f"Individual metrics saved to: {metrics_dir}")
     print(f"Total tools benchmarked: {len(all_tool_results)}")
     
-    # Create visualization
-    plot_file = os.path.join(args.eval_dir, "benchmark_plot.png")
-    plot_benchmark_results(all_tool_results, plot_file)
+    # Create visualizations
+    metrics_plot_file = os.path.join(args.eval_dir, "benchmark_metrics.png")
+    plot_metrics_results(all_tool_results, metrics_plot_file, datasets)
+    
+    runtime_plot_file = os.path.join(args.eval_dir, "benchmark_runtime.png")
+    plot_runtime_results(all_tool_results, runtime_plot_file, datasets)
     
     return 0
 

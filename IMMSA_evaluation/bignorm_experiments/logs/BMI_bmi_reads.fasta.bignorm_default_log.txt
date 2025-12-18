@@ -1,0 +1,109 @@
+Command: /mgvd/Bignorm/Bignorm -u /mnt/data/IMMSA_bignorm_experiments/BMI_bmi_reads.fasta.gz -z -d 3 -k 31 -A 3 -B 5 -C 20 -N 10
+Return code: 0
+Elapsed time: 13632.04 s
+
+Bignorm starting
+----------------
+
+command line:
+/mgvd/Bignorm/Bignorm -u /mnt/data/IMMSA_bignorm_experiments/BMI_bmi_reads.fasta.gz -z -d 3 -k 31 -A 3 -B 5 -C 20 -N 10 
+
+parameters
+	verbosity: 3
+	k:        31
+	strategy: 3, parameter: 20
+	memory strategy: 0, mem_frac: 0.900000
+	input files: 1 unpaired files, 0 paired files:
+		/mnt/data/IMMSA_bignorm_experiments/BMI_bmi_reads.fasta.gz
+decider started, id: 3
+writer started, id: 1
+hasher started, id: 0
+reader  started, id: 2
+i: 28  b_mcount: 34
+reader: 100000 reads processed
+reader: 200000 reads processed
+reader: 300000 reads processed
+reader: 400000 reads processed
+reader: 500000 reads processed
+reader: 600000 reads processed
+reader: 700000 reads processed
+reader: 800000 reads processed
+reader: 900000 reads processed
+reader: 1000000 reads processed
+reader: 1100000 reads processed
+reader: 1200000 reads processed
+reader: 1300000 reads processed
+reader: 1400000 reads processed
+reader: 1500000 reads processed
+reader: 1600000 reads processed
+reader: 1700000 reads processed
+reader: 1800000 reads processed
+reader: 1900000 reads processed
+reader: 2000000 reads processed
+reader: 2100000 reads processed
+reader: 2200000 reads processed
+reader: 2300000 reads processed
+reader: 2400000 reads processed
+reader: 2500000 reads processed
+reader: 2600000 reads processed
+reader: 2700000 reads processed
+reader: 2800000 reads processed
+reader: 2900000 reads processed
+reader: 3000000 reads processed
+reader: 3100000 reads processed
+reader: 3200000 reads processed
+reader: 3300000 reads processed
+reader: 3400000 reads processed
+reader: 3500000 reads processed
+reader: 3600000 reads processed
+reader: 3700000 reads processed
+reader: 3800000 reads processed
+reader: 3900000 reads processed
+reader: 4000000 reads processed
+reader: 4100000 reads processed
+reader: 4200000 reads processed
+reader: 4300000 reads processed
+reader: 4400000 reads processed
+reader: 4500000 reads processed
+reader: 4600000 reads processed
+reader: 4700000 reads processed
+reader: 4800000 reads processed
+reader: 4900000 reads processed
+reader: 5000000 reads processed
+reader: 5100000 reads processed
+reader: 5200000 reads processed
+reader: 5300000 reads processed
+reader: 5400000 reads processed
+reader: 5500000 reads processed
+reader: 5541101 reads processed, finished
+reader ended
+hasher ended
+decider ended
+writer ended
+
+	Statistics
+	----------
+
+Reads processed:
+	unpaired: 5541101
+	paired  : 0
+	----------
+	total   : 5541101
+
+Reads shorter than k (31): 0
+Reads containing more than 10 Ns: 387796
+K-mers containing N: 35
+K-mers processed: 360731350 (at least 340695987 different)
+Reads accepted:
+	unpaired: 5152633 
+	paired  : 0
+	----------
+	total   : 5152633
+
+n_occupied:	1934510053
+hist 0:	749844507
+diff:	0
+Sum over all counters: 3605737523 (360573760.00 per hashline, 1.06 per distinct k-mer)
+fp:	0.038 (base: 0.721)
+reads kept: 92.99 %
+time needed: 13632 s

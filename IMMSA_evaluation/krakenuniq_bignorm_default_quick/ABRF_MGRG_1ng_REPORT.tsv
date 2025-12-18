@@ -1,0 +1,69 @@
+# KrakenUniq v1.0.4 DATE:2025-12-18T05:02:16Z DB:/mnt/data/standard_db DB_SIZE:404451462724 WD:/mgvd
+# CL:/opt/conda/bin/krakenuniq --paired --check-names --db /mnt/data/standard_db --threads 8 --report IMMSA_evaluation/krakenuniq_bignorm_default_quick/ABRF_MGRG_1ng_REPORT.tsv --output IMMSA_evaluation/krakenuniq_bignorm_default_quick/ABRF_MGRG_1ng_OUTPUT.tsv --quick /mnt/data/IMMSA/ABRF_MGRG_1ng_Repli_g_08142015_GTCCGC_L001_R1_001.fastq.gz.bignorm_default.gz /mnt/data/IMMSA/ABRF_MGRG_1ng_Repli_g_08142015_GTCCGC_L001_R2_001.fastq.gz.bignorm_default.gz
+%	reads	taxReads	kmers	dup	cov	taxID	rank	taxName
+0.6821	10	10	8579	1.66	NA	0	no rank	unclassified
+99.32	1456	6	1449	1	4.299e-08	1	no rank	root
+92.22	1352	0	1347	1	4.034e-08	131567	no rank	  cellular organisms
+92.22	1352	12	1347	1	4.503e-08	2	superkingdom	    Bacteria
+57.64	845	1	842	1	7.436e-08	1783272	clade	      Terrabacteria group
+48.09	705	0	704	1	1.666e-07	1239	phylum	        Firmicutes
+48.09	705	1	704	1	2.287e-07	91061	class	          Bacilli
+48.02	704	1	703	1	3.164e-07	1385	order	            Bacillales
+30.08	441	0	440	1	4.231e-07	186817	family	              Bacillaceae
+30.08	441	2	440	1	1.752e-05	45667	genus	                Halobacillus
+29.95	439	416	438	1	0.0001092	1570	species	                  Halobacillus halophilus
+1.569	23	23	23	1	0.004974	866895	strain	                    Halobacillus halophilus DSM 2266
+17.87	262	3	262	1	1.206e-06	90964	family	              Staphylococcaceae
+17.67	259	28	259	1	1.547e-06	1279	genus	                Staphylococcus
+15.76	231	228	231	1	2.973e-05	1282	species	                  Staphylococcus epidermidis
+0.2046	3	3	3	1	0.0003465	176280	strain	                    Staphylococcus epidermidis ATCC 12228
+9.482	139	2	137	1.01	2.266e-08	201174	phylum	        Actinobacteria
+9.345	137	12	135	1.01	2.291e-08	1760	class	          Actinomycetia
+8.527	125	6	123	1.02	1.031e-07	85006	order	            Micrococcales
+8.117	119	3	117	1.02	3.455e-07	1268	family	              Micrococcaceae
+7.913	116	49	115	1.01	9.119e-06	1269	genus	                Micrococcus
+4.57	67	39	66	1.02	9.217e-06	1270	species	                  Micrococcus luteus
+1.91	28	28	28	1	7.634e-05	465515	strain	                    Micrococcus luteus NCTC 2665
+33.77	495	3	493	1	3.321e-08	1224	phylum	      Proteobacteria
+33.22	487	5	485	1	6.697e-08	1236	class	        Gammaproteobacteria
+20.94	307	6	305	1.01	1.585e-07	91347	order	          Enterobacterales
+20.46	300	278	298	1.01	3.107e-07	543	family	            Enterobacteriaceae
+1.432	21	12	21	1	2.166e-07	561	genus	              Escherichia
+0.6139	9	9	9	1	1.349e-07	562	species	                Escherichia coli
+0.06821	1	0	1	1	6.295e-08	1330545	genus	              Lelliottia
+0.06821	1	1	1	1	8.254e-08	61646	species	                Lelliottia amnigena
+0.06821	1	0	1	1	3.491e-09	1903411	family	            Yersiniaceae
+0.06821	1	1	1	1	6.343e-09	613	genus	              Serratia
+11.94	175	0	175	1	1.031e-07	72274	order	          Pseudomonadales
+11.94	175	2	175	1	1.075e-07	135621	family	            Pseudomonadaceae
+11.8	173	89	173	1	1.089e-07	286	genus	              Pseudomonas
+5.73	84	2	84	1	5.05e-07	136843	species group	                Pseudomonas fluorescens group
+5.593	82	82	82	1	1.463e-06	294	species	                  Pseudomonas fluorescens
+0.3411	5	0	5	1	1.279e-09	28211	class	        Alphaproteobacteria
+0.3411	5	0	5	1	2.414e-09	356	order	          Hyphomicrobiales
+0.2729	4	0	4	1	8.579e-09	41294	family	            Nitrobacteraceae
+0.2729	4	3	4	1	9.89e-09	374	genus	              Bradyrhizobium
+0.06821	1	0	1	1	5.333e-09	2631580	no rank	                unclassified Bradyrhizobium
+0.06821	1	1	1	1	1.606e-07	1325120	species	                  Bradyrhizobium sp. CCBAU 53421
+0.06821	1	0	1	1	3.319e-09	69277	family	            Phyllobacteriaceae
+0.06821	1	0	1	1	4.503e-09	68287	genus	              Mesorhizobium
+0.06821	1	1	1	1	1.835e-07	2725666	species	                Mesorhizobium terrae
+6.412	94	0	92	1.02	2.486e-05	2787854	no rank	  other entries
+6.412	94	0	92	1.02	2.486e-05	28384	no rank	    other sequences
+6.412	94	0	92	1.02	2.486e-05	81077	no rank	      artificial sequences
+6.412	94	94	92	1.02	2.486e-05	32630	species	        synthetic construct
+0.2729	4	0	4	1	1.341e-08	10239	superkingdom	  Viruses
+0.2729	4	0	4	1	2.161e-08	2731341	clade	    Duplodnaviria
+0.2729	4	0	4	1	2.161e-08	2731360	kingdom	      Heunggongvirae
+0.2729	4	0	4	1	2.353e-08	2731618	phylum	        Uroviricota
+0.2729	4	0	4	1	2.353e-08	2731619	class	          Caudoviricetes
+0.2729	4	0	4	1	2.474e-08	28883	order	            Caudovirales
+0.1364	2	0	2	1	3.077e-08	10662	family	              Myoviridae
+0.1364	2	0	2	1	4.89e-06	857479	subfamily	                Peduovirinae
+0.1364	2	0	2	1	0.02174	2578230	no rank	                  unclassified Peduovirinae
+0.1364	2	2	2	1	0.02174	2759177	species	                    Vibrio phage ValB1MD-2
+0.1364	2	0	2	1	5.037e-06	2842327	family	              Rountreeviridae
+0.1364	2	0	2	1	1.118e-05	2732588	subfamily	                Rakietenvirinae
+0.1364	2	0	2	1	6.579e-05	2732589	genus	                  Andhravirus
+0.1364	2	0	2	1	0.000164	2732591	species	                    Andhravirus andhra
+0.1364	2	2	2	1	0.000164	1958907	no rank	                      Staphylococcus phage Andhra
