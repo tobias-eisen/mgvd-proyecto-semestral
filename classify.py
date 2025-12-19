@@ -89,6 +89,11 @@ def main():
             continue
         
         for fasta_filename in sorted(os.listdir(FASTA_DIR)):
+            # If method_suffix is specified, only process files with that suffix
+            if args.method_suffix:
+                if not fasta_filename.endswith(f".{args.method_suffix}.gz"):
+                    continue
+                 
             fasta_fp = os.path.join(FASTA_DIR, fasta_filename)
             if fasta_filename.startswith(dataset) and os.path.isfile(fasta_fp):
                 if "R2" in fasta_filename and os.path.isfile(fasta_fp.replace("R2", "R1")):

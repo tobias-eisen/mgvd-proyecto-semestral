@@ -384,22 +384,31 @@ def plot_runtime_results(all_tool_results, output_file, datasets):
     x = np.arange(n_tools)
     width = 0.7
     
-    # Runtime plot - single bar per tool (total runtime)
-    runtime_means = [all_tool_results[tool]['runtime_mean'] for tool in tools_with_runtime]
-    runtime_stds = [all_tool_results[tool]['runtime_std'] for tool in tools_with_runtime]
+    # Separate base runtime and bignorm runtime
+    base_runtime_means = [all_tool_results[tool]['runtime_mean'] for tool in tools_with_runtime]
+    base_runtime_stds = [all_tool_results[tool]['runtime_std'] for tool in tools_with_runtime]
+    bignorm_runtime_means = [all_tool_results[tool].get('bignorm_runtime_mean', 0) for tool in tools_with_runtime]
+    bignorm_runtime_stds = [all_tool_results[tool].get('bignorm_runtime_std', 0) for tool in tools_with_runtime]
     
-    # Plot runtime data
-    bars = ax.bar(x, runtime_means, width, alpha=0.8, color='forestgreen', yerr=runtime_stds)
+    # Calculate total runtimes for positioning labels
+    total_runtimes = [base + bignorm for base, bignorm in zip(base_runtime_means, bignorm_runtime_means)]
+    
+    # Plot stacked bars
+    bars_base = ax.bar(x, base_runtime_means, width, alpha=0.8, color='forestgreen', 
+                       yerr=base_runtime_stds, label='KrakenUniq')
+    bars_bignorm = ax.bar(x, bignorm_runtime_means, width, alpha=0.8, color='orange',
+                          bottom=base_runtime_means, yerr=bignorm_runtime_stds, 
+                          label='Bignorm')
+    
     ax.set_ylabel('Runtime (seconds)', fontsize=16, fontweight='bold')
     ax.set_title('Runtime Comparison', fontsize=18, fontweight='bold')
     
-   
     # Set y-axis limits to leave space for labels at the top
-    max_runtime = max(runtime_means)
+    max_runtime = max(total_runtimes)
     ax.set_ylim(top=max_runtime * 1.3)
 
-     # Add time labels to the right of bars
-    for i, (bar, runtime_sec, runtime_std) in enumerate(zip(bars, runtime_means, runtime_stds)):
+    # Add time labels to the right of bars
+    for i, runtime_sec in enumerate(total_runtimes):
         hours = int(runtime_sec // 3600)
         minutes = int((runtime_sec % 3600) // 60)
         seconds = int(runtime_sec % 60)
@@ -415,8 +424,8 @@ def plot_runtime_results(all_tool_results, output_file, datasets):
         label = ", ".join(label_parts)
         
         # Position label to the right of the bar
-        height = bar.get_height() + max_runtime * 0.1
-        x_pos = bar.get_x() + bar.get_width() * 0.55
+        height = runtime_sec + max_runtime * 0.1
+        x_pos = i + width * 0.05
         ax.text(x_pos, height,
                 label,
                 ha='left', va='center', fontsize=16, rotation=0, fontweight='bold')
@@ -434,6 +443,9 @@ def plot_runtime_results(all_tool_results, output_file, datasets):
             label.set_color('red')
     
     ax.grid(axis='y', alpha=0.3, linestyle='--')
+    
+    # Add legend
+    ax.legend(loc='upper left', fontsize=14, frameon=True)
     
     # Add datasets text box on the right
     datasets_text = "Evaluated Datasets:\n" + "\n".join([f"• {ds}" for ds in datasets])
@@ -637,6 +649,7 @@ def main():
             
             tool_results = []
             tool_runtimes_list = []
+            tool_bignorm_runtimes_list = []
             
             for dataset in datasets:
                 result = eval_tool_classification(dataset, tool_dir, tool_name)
@@ -644,19 +657,20 @@ def main():
                 # Get runtime for this dataset
                 if tool_runtimes is not None and dataset in tool_runtimes:
                     dataset_runtime = tool_runtimes[dataset]
+                    bignorm_prep_time = 0
                     
                     # Check if this tool uses Bignorm preprocessing
                     match = re.search(r'bignorm_(\w+)', dir_name)
                     if match:
                         bignorm_param_set = match.group(0).replace("_quick", "")
                         print(bignorm_param_set)
-                        # Add Bignorm preprocessing time if available
+                        # Get Bignorm preprocessing time if available
                         if bignorm_runtimes and (dataset, bignorm_param_set) in bignorm_runtimes:
                             bignorm_prep_time = bignorm_runtimes[(dataset, bignorm_param_set)]
-                            dataset_runtime += bignorm_prep_time
-                            print(f"    {dataset}: Added Bignorm preprocessing time ({bignorm_prep_time:.0f}s) for {bignorm_param_set}")
+                            print(f"    {dataset}: Bignorm preprocessing time: {bignorm_prep_time:.0f}s for {bignorm_param_set}")
                     
                     tool_runtimes_list.append(dataset_runtime)
+                    tool_bignorm_runtimes_list.append(bignorm_prep_time)
                 
                 if result:
                     tool_results.append(result)
@@ -698,7 +712,10 @@ def main():
                 if tool_runtimes_list:
                     all_tool_results[tool_name]['runtime_mean'] = np.mean(tool_runtimes_list)
                     all_tool_results[tool_name]['runtime_std'] = np.std(tool_runtimes_list)
-                    print(f"    Runtime - Mean: {all_tool_results[tool_name]['runtime_mean']:.0f}s ± {all_tool_results[tool_name]['runtime_std']:.0f}s")
+                    all_tool_results[tool_name]['bignorm_runtime_mean'] = np.mean(tool_bignorm_runtimes_list)
+                    all_tool_results[tool_name]['bignorm_runtime_std'] = np.std(tool_bignorm_runtimes_list)
+                    total_mean = all_tool_results[tool_name]['runtime_mean'] + all_tool_results[tool_name]['bignorm_runtime_mean']
+                    print(f"    Runtime - Mean: {total_mean:.0f}s (Base: {all_tool_results[tool_name]['runtime_mean']:.0f}s, Bignorm: {all_tool_results[tool_name]['bignorm_runtime_mean']:.0f}s)")
                 else:
                     print(f"    No runtime data available for {tool_name}")
                 

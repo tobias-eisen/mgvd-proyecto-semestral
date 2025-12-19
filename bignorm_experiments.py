@@ -295,8 +295,12 @@ def run_bignorm_experiment(dataset, params, paired_file=None):
             
             if os.path.exists(out1_keep):
                 os.rename(out1_keep, out1)
+            else:
+                print(f"{out1_keep} was not found and therefore not renamed")
             if os.path.exists(out2_keep):
                 os.rename(out2_keep, out2)
+            else:
+                print(f"{out2_keep} was not found and therefore not renamed")
             
             output_size = get_file_size(out1) + get_file_size(out2)
             output_files = f"{os.path.basename(out1)}, {os.path.basename(out2)}"
@@ -309,6 +313,8 @@ def run_bignorm_experiment(dataset, params, paired_file=None):
             
             if os.path.exists(out1_keep):
                 os.rename(out1_keep, out1)
+            else:
+                print(f"{out1_keep} was not found and therefore not renamed")
             
             output_size = get_file_size(out1)
             output_files = os.path.basename(out1)
