@@ -56,7 +56,7 @@ docker run -it \
 	-v $(pwd):/mgvd \
 	--name mgvd mgvd /bin/bash
 
-# (Optional, because Bignorm executable is already in repository) Inside container: Build Bignorm
+# Optional re-build of Bignorm (Bignorm executable is already in repository)
 cd /mgvd/Bignorm && make && cd ..
 ```
 
@@ -71,19 +71,19 @@ Classify metagenomic reads using KrakenUniq with various options (they can be co
 
 ```bash
 # Basic classification (iterates with standard KrakenUniq over all IMMSA read files)
-python3 classify.py 
+./classify.py 
 
-# Quick mode (faster, less sensitive)
-python3 classify.py --quick
+# Quick mode (use first hit(s))
+./classify.py --quick
 
-# With memory preloading (faster subsequent queries)
-python3 classify.py --preload-size 1G
+# With memory preloading
+./classify.py --preload-size 1G
 
-# Process specific file only
-python3 classify.py --file /mnt/data/IMMSA/sample.fq.gz
+# Process specific datasets only
+./classify.py --datasets-to-classify JGI_SRR033549 ABRF_MGRG_1ng
 
 # Use normalized data (Bignorm or custom), searches for <original_fasta_filename>.<method_suffix>.gz
-python3 classify.py --method-suffix bignorm_default
+./classify.py --method-suffix bignorm_default
 ```
 
 **Outputs:**
@@ -96,13 +96,16 @@ Test multiple Bignorm normalization parameters to find optimal filtering setting
 
 ```bash
 # Run all parameter combinations
-python3 bignorm_experiments.py --experiment-dir IMMSA_evaluation/bignorm_experiments
+./bignorm_experiments.py --experiment-dir IMMSA_evaluation/bignorm_experiments
 
 # Run only default/baseline parameters
-python3 bignorm_experiments.py --experiment-dir IMMSA_evaluation/bignorm_experiments --baseline-only
+./bignorm_experiments.py \
+  --experiment-dir IMMSA_evaluation/bignorm_experiments \
+  --baseline-only
 
 # Process single file
-python3 bignorm_experiments.py --experiment-dir IMMSA_evaluation/bignorm_experiments \
+./bignorm_experiments.py \
+  --experiment-dir IMMSA_evaluation/bignorm_experiments \
   --file /mnt/data/IMMSA//Volumes/SSDext/metagenomics_data/IMMSA/ABRF_MGRG_1ng_Repli_g_08142015_GTCCGC_L001_R1_001.fastq.gz
 ```
 
@@ -125,24 +128,24 @@ Evaluate classification accuracy against ground truth at genus and species level
 
 ```bash
 # Benchmark classification results (evaluates all tools in eval-dir)
-python3 benchmark.py \
+./benchmark.py \
   --ground-truth-dir /mnt/data/IMMSA/truth_sets \
   --eval-dir IMMSA_evaluation
 
 # Benchmark with Bignorm preprocessing times included (for combined runtime of Bignorm-normalized runs in benchmark_runtime.png)
-python3 benchmark.py \
+./benchmark.py \
   --ground-truth-dir /mnt/data/IMMSA/truth_sets \
   --eval-dir IMMSA_evaluation \
   --bignorm-experiments-dir IMMSA_evaluation/bignorm_experiments
 
 # Evaluate only specific datasets
-python3 benchmark.py \
+./benchmark.py \
   --ground-truth-dir /mnt/data/IMMSA/truth_sets \
   --eval-dir IMMSA_evaluation \
   --files-to-evaluate JGI_SRR033549 ABRF_MGRG_1ng
 
 # Only evaluate and plot KrakenUniq variations
-python3 benchmark.py \
+./benchmark.py \
   --ground-truth-dir /mnt/data/IMMSA/truth_sets \
   --eval-dir IMMSA_evaluation \
   --krakenuniq-only
@@ -167,7 +170,7 @@ python3 benchmark.py \
     ├── bignorm_experiments/    # Normalization experiments
     └── benchmark_summary.tsv   # Performance metrics
 
-/mnt/data/                      # Docker volume (read-only data)
+/mnt/data/                      # Mounted Docker volume
 ├── IMMSA/                      # Metagenomic datasets
 │   └── truth_sets/             # Ground truth taxonomies
 └── standard_db/                # KrakenUniq database
